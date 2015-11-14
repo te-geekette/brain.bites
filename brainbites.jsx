@@ -1,7 +1,11 @@
 Courses = new Mongo.Collection('courses');
 ContentItems = new Mongo.Collection('contentItems');
 
+
+
 if (Meteor.isClient) {
+
+	Meteor.subscribe('courses');
 
 	Meteor.startup(function () {
 		FlowRouter.initialize();
@@ -10,9 +14,13 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-  	// Meteor.startup(function () {
-   //  // code to run on server at startup
-  	// });
+  	Meteor.publish('courses', function(){
+  		return Courses.find({
+  			$or: [
+  				{owner: this.userId}
+  			]
+  		});
+  	});
 }
 
 Meteor.methods({
