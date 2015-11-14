@@ -10,7 +10,7 @@ CourseList = React.createClass({
 
 	getMeteorData(){
 		return {
-			courses: Courses.find({}).fetch()
+			courses: Courses.find({}, {sort: {createdAt: -1}}).fetch()
 		}
 	},
 
@@ -25,16 +25,21 @@ CourseList = React.createClass({
 		this.setState({displayState: 'active'});
 	},
 
+	cancelCourseCreate(){
+		this.setState({displayState: 'hidden'});
+	},
+
 	render(){
+
 		return (
 			<div>
 				<ul>
+					<CourseHeaderCreate className={this.state.displayState} onClick={this.cancelCourseCreate} />
 					{this.renderCourses()}
-					<CourseHeaderCreate className={this.state.displayState} />
 				</ul>
 				<div className="fixed-action-btn" onClick={this.showCourseCreate}>
 	    			<a className="btn-floating btn-large red">
-	      				<i className="large material-icons">add</i>
+	      				<span className="large material-icons">add</span>
 	    			</a>
 	    		</div>
 	    	</div>

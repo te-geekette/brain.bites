@@ -25,10 +25,20 @@ CourseHeader = React.createClass({
 					<div className="col s12">
 						<div className="card cyan ligthen-5">
 							<div className="card-content text-cyan text-darken-4">
-								<div className="card-title">{this.props.course.title}</div>
-								<div>{this.props.course.description}</div>
-								<div>{this.props.course.length}</div> 	
-								<p>And here is some content</p>
+
+								<div className="row">
+									<div className="card-title col s12">{this.props.course.title}</div>
+								</div>
+								<div className="row">
+									<div className="col s6">
+										<div>{this.props.course.description}</div>
+									</div>
+									<div className="col s6">
+	          								<p>Estimated Course Duration:</p> 	
+											<p>Course Progress:</p>
+	        						</div>
+								</div>
+
 							</div>
 						</div>
 					</div>
