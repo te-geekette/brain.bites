@@ -8,8 +8,6 @@ CourseHeaderCreate = React.createClass({
 
 		Meteor.call('addCourse', title, description);
 
-		this.props.className = 'hidden';
-
 	},
 
 	render(){
@@ -36,7 +34,7 @@ CourseHeaderCreate = React.createClass({
 	        							</div>
 									</div>
 									<button className="waves-effect waves-light btn" type="button" onClick={this.props.onClick}>Cancel</button>
-									<button className="waves-effect waves-light btn" type="submit" >Save</button>
+									<button className="waves-effect waves-light btn" type="submit" onClick={this.props.onClick}>Save</button>
 								</form>
 
 							</div>

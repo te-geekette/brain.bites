@@ -4,21 +4,12 @@ CourseHeader = React.createClass({
 		course: React.PropTypes.object.isRequired
 	},
 
-	// mixins: [ReactMeteorData],
-
-	// getMeteorData(){
-
-	// },
-
-	// getInitialState(){
-	// 	return {
-	// 		title: "Course Title",
-	// 		description: 'Course description',
-	// 		editing: false
-	// 	};
-	// },
+	setDuration(){
+		Meteor.call('setCourseDuration', this.props.course._id, 'I am so set!');
+	},
 
 	render(){
+
 		return (
 			<li> 
 				<div className="row">
@@ -34,8 +25,9 @@ CourseHeader = React.createClass({
 										<div>{this.props.course.description}</div>
 									</div>
 									<div className="col s6">
-	          								<p>Estimated Course Duration:</p> 	
+	          								<p>Estimated Course Duration: {this.props.course.duration} </p> 
 											<p>Course Progress:</p>
+											<button type="button" onClick={this.setDuration}>Set me</button>
 	        						</div>
 								</div>
 

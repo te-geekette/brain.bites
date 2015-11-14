@@ -31,8 +31,13 @@ Meteor.methods({
 			description: description,
 			createdAt: new Date(),
 			owner: Meteor.userId(),
-			username: Meteor.user().username
+			username: Meteor.user().username,
+			duration: 'No duration set yet'
 		});
+	},
+
+	setCourseDuration(courseId, duration){
+		Courses.update(courseId, { $set: { duration: duration} });
 	}
 
 });
