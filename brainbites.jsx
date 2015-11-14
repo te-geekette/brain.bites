@@ -15,4 +15,16 @@ if (Meteor.isServer) {
   	// });
 }
 
-// Meteor.methods();
+Meteor.methods({
+
+	addCourse(title, description){
+		Courses.insert({
+			title: title, 
+			description: description,
+			createdAt: new Date(),
+			owner: Meteor.userId(),
+			username: Meteor.user().username
+		});
+	}
+
+});

@@ -4,7 +4,7 @@ Navigation = React.createClass({
 			<nav>
 				<ul id="nav-links" className='right'>
 					<li><AccountsUIWrapper /></li>
-					<a href="#" class="brand-logo">Logo</a>
+					<a href="#" className="brand-logo">Logo</a>
 				</ul>
 				<ul id="slide-out" className="side-nav fixed">
 					<li><Profile /></li>

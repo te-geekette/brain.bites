@@ -7,3 +7,16 @@ main {
       padding-left: 0;
     }
   }
+
+.hidden {
+	display: none;
+}
+
+.active{
+	display: list-item;
+}
+
+.fixed-action-btn {
+	bottom: 45px;
+	right: 24px;
+}
