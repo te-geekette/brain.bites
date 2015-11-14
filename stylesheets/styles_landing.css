@@ -1,0 +1,42 @@
+#login-buttons a,
+.accounts-dialog a {
+	text-decoration: none
+}
+
+#login-buttons .login-link-text {
+	color: white;
+}
+
+#login-buttons .login-close-text {
+	float: right;
+	font-size: 12px;
+	color: rgba(0,0,0,0.8);
+}
+
+#login-buttons #signup-link{
+	float: center;
+	
+}
+
+#login-buttons #forgot-password-link {
+	float: center;
+}
+
+.center-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgba(0,0,0,0.6);
+	width: 250px;
+	height: 400px;
+	padding-top: 150px
+}
+
+.center {
+	position: fixed;
+  	top: 50%;
+  	left: 50%;
+  	margin-top: -200px;
+  	margin-left: -125px;
+}
+
