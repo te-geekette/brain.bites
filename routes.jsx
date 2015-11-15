@@ -12,6 +12,7 @@ FlowRouter.route('/', {
 	}
 });
 
+
 FlowRouter.route('/overview', {
 	name: 'overview',
 	action(){ 
@@ -19,9 +20,19 @@ FlowRouter.route('/overview', {
 	}
 });
 
-// FlowRouter.route('overview/:_id', {
-// 	name: 'course',
-// 	action(params){ 
-// 		ReactLayout.render(Main, {content: <CourseView _id={params._id} />});
-// 	}
-// });
+FlowRouter.route('/overview/:_id', {
+	name: 'course',
+	action(params){ 
+		ReactLayout.render(Main, {content: <CourseList courseId={params._id} />});
+	}
+});
+
+let pathFor = ( path, params ) => {
+  let query = params && params.query ? FlowRouter._qs.parse( params.query ) : {};
+  return FlowRouter.path( path, params, query );
+};
+
+FlowHelpers = {
+  pathFor: pathFor
+};
+

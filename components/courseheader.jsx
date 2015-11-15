@@ -8,11 +8,12 @@ CourseHeader = React.createClass({
 		Meteor.call('setCourseDuration', this.props.course._id, 'I am so set!');
 	},
 
+
 	render(){
 
 		return (
 			<li> 
-				<div className="row">
+				<a className="row" href={FlowHelpers.pathFor('/overview', { '_id': this.props.course._id })} onClick={this.props.changeContent}>
 					<div className="col s12">
 						<div className="card cyan ligthen-5">
 							<div className="card-content text-cyan text-darken-4">
@@ -30,11 +31,10 @@ CourseHeader = React.createClass({
 											<button type="button" onClick={this.setDuration}>Set me</button>
 	        						</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</li>
 			);
 	},

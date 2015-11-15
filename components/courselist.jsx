@@ -4,40 +4,63 @@ CourseList = React.createClass({
 
 	getInitialState(){
 		return {
-			displayState: 'hidden'
+			displayState: 'hidden',
+			displayContent: 'overview'
 		}
 	},
 
 	getMeteorData(){
+		var courseId = "bYNTjfa8RptbvmAy5" // this.props.courseId;
+		console.log(courseId);
+
 		return {
-			courses: Courses.find({}, {sort: {createdAt: -1}}).fetch()
+			courses: Courses.find({}, {sort: {createdAt: -1}}).fetch(),
+			contentItems: ContentItems.find({}),
+			singleCourse: Courses.findOne({ _id: courseId})
 		}
 	},
 
 	renderCourses(){
 		return this.data.courses.map((course) => {
-			return <CourseHeader key={course._id} course={course} />;
+			return <CourseHeader key={course._id} course={course} changeContent={this.changeDisplayContent}  />;
 		});
 
 	},
+	renderContent(){
+		return this.data.contentItems.map((contentItem) => {
+			return <Content key={contentItem._id} contentItem={contentItem} />;
+		});
+	},
 
-	showCourseCreate(){
+	showCreate(){
 		this.setState({displayState: 'active'});
 	},
 
-	cancelCourseCreate(){
+	cancelCreate(){
 		this.setState({displayState: 'hidden'});
+	},
+
+	changeDisplayContent(){
+		this.setState({displayContent: (this.state.displayContent === 'overview'? 'content': 'overview')});
+	},
+
+
+	content(){
+		var isOverview = this.state.displayContent === 'overview';
+		console.log(isOverview);
+		// Syntax might be off here. If it doesn't work, try with if/else
+		return (isOverview ? 
+			<List className={this.state.displayState} onClick={this.cancelCreate} render={this.renderCourses}/> :
+			<Course course={this.data.singleCourse} className={this.state.displayState} onClick={this.cancelCreate} render={this.renderContent} />
+		);
 	},
 
 	render(){
 
 		return (
 			<div>
-				<ul>
-					<CourseHeaderCreate className={this.state.displayState} onClick={this.cancelCourseCreate} />
-					{this.renderCourses()}
-				</ul>
-				<div className="fixed-action-btn" onClick={this.showCourseCreate}>
+				{this.content()}
+				<div className="fixed-action-btn" onClick={this.showCreate}>
 	    			<a className="btn-floating btn-large red">
 	      				<span className="large material-icons">add</span>
 	    			</a>
