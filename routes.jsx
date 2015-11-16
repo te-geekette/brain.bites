@@ -1,4 +1,10 @@
+// ROUTERS //
+
+// has to wait to not interfere with meteor's onStartup function
 FlowRouter.wait();
+
+
+// Landing page route 
 
 FlowRouter.route('/', {
 	name: 'landing',
@@ -12,6 +18,7 @@ FlowRouter.route('/', {
 	}
 });
 
+// In-App routes 
 
 FlowRouter.route('/overview', {
 	name: 'overview',

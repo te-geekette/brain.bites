@@ -2,7 +2,6 @@ Courses = new Mongo.Collection('courses');
 ContentItems = new Mongo.Collection('contentItems');
 
 
-
 if (Meteor.isClient) {
 
 	Meteor.subscribe('courses');

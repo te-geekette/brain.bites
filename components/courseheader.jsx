@@ -4,10 +4,6 @@ CourseHeader = React.createClass({
 		course: React.PropTypes.object.isRequired
 	},
 
-	setDuration(){
-		Meteor.call('setCourseDuration', this.props.course._id, 'I am so set!');
-	},
-
 	buildURL(){
 		var courseURL = "/overview/" + this.props.course._id;
 		return courseURL;
@@ -31,7 +27,6 @@ CourseHeader = React.createClass({
 									<div className="col s6">
 	          								<p>Estimated Course Duration: {this.props.course.duration} </p> 
 											<p>Course Progress:</p>
-											<button type="button" onClick={this.setDuration}>Set me</button>
 	        						</div>
 								</div>
 							</div>
@@ -39,9 +34,12 @@ CourseHeader = React.createClass({
 					</div>
 				</a>
 			</li>
-			);
+		);
 	},
 });
 
-//onClick={this.props.changeContent}
+// Test and practice functions to, will be removed later:
+	// setDuration(){
+	// 	Meteor.call('setCourseDuration', this.props.course._id, 'I am so set!');
+	// },
 

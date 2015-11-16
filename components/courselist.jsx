@@ -1,5 +1,6 @@
 CourseList = React.createClass({
 	
+	// INITIAL SETUP 
 	mixins: [ReactMeteorData],
 
 	getInitialState(){
@@ -18,6 +19,7 @@ CourseList = React.createClass({
 		}
 	},
 
+	// DEFINE WHICH CONTENT TO DISPLAY: Course Overview with list of courses, Single Course with content, Create Course or Create Content states
 	renderCourses(){
 		return this.data.courses.map((course) => {
 			return <CourseHeader key={course._id} course={course} changeContent={this.changeDisplayContent}  />;
@@ -38,6 +40,7 @@ CourseList = React.createClass({
 		this.setState({displayState: 'hidden'});
 	},
 
+	// NOTE: This might not be the nicest way to work with nested components. I probably should have chosen a router that makes better use of nested components.
 	content(){
 		var isOverview = this.props.contentOverview === 'overview';
 		return (isOverview ? 
@@ -46,6 +49,7 @@ CourseList = React.createClass({
 		);
 	},
 
+	// DISPLAY THE PAGE
 	render(){
 
 		return (
