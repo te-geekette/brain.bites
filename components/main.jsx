@@ -1,13 +1,71 @@
 Main = React.createClass({
-	render() {
-		return ( 
+	
+	// INITIAL SETUP 
+	mixins: [ReactMeteorData],
+
+	getInitialState(){
+		return {
+			displayState: 'hidden'
+		}
+	},
+
+	getMeteorData(){
+		var courseId = this.props.courseId;
+
+		return {
+			courses: Courses.find({}, {sort: {createdAt: -1}}).fetch(),
+			contentItems: ContentItems.find({}).fetch(),
+			singleCourse: Courses.findOne({ _id: courseId})
+		}
+	},
+
+	// DEFINE WHICH CONTENT TO DISPLAY: Course Overview with list of courses, Single Course with content, Create Course or Create Content states
+	renderCourses(){
+		return this.data.courses.map((course) => {
+			return <CourseHeader key={course._id} course={course} changeContent={this.changeDisplayContent}  />;
+		});
+
+	},
+	renderContent(){
+		return this.data.contentItems.map((contentItem) => {
+			return <Content key={contentItem._id} contentItem={contentItem} />;
+		});
+	},
+
+	showCreate(){
+		this.setState({displayState: 'active'});
+	},
+
+	cancelCreate(){
+		this.setState({displayState: 'hidden'});
+	},
+
+	// NOTE: This might not be the nicest way to work with nested components. I probably should have chosen a router that makes better use of nested components.
+	// ToDo: Try passing those directly into the route and access the props and states via this.(..) in the List / Course component directly.... Probably won't work.  
+	content(){
+		var isOverview = this.props.contentOverview === 'overview';
+		return (isOverview ? 
+			<List className={this.state.displayState} onClick={this.cancelCreate} render={this.renderCourses}/> :
+			<Course course={this.data.singleCourse} className={this.state.displayState} onClick={this.cancelCreate} render={this.renderContent} />
+		);
+	},
+
+	// DISPLAY THE PAGE
+	render(){
+
+		return (
 			<div>
 				<header>
 					<Navigation />
 				</header>
 				<main>
 					<div className='container'>
-						{this.props.content}
+						{this.content()}
+						<div className="fixed-action-btn" onClick={this.showCreate}>
+	    					<a className="btn-floating btn-large red">
+	      						<span className="large material-icons">add</span>
+	    					</a>
+	    				</div>
 					</div>
 				</main>
 			</div>

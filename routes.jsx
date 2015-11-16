@@ -23,7 +23,7 @@ FlowRouter.route('/', {
 FlowRouter.route('/overview', {
 	name: 'overview',
 	action(){ 
-		ReactLayout.render(Main, { content:<CourseList contentOverview='overview'/> });
+		ReactLayout.render(Main, { contentOverview:'overview' });
 		
 	}
 });
@@ -31,7 +31,7 @@ FlowRouter.route('/overview', {
 FlowRouter.route('/overview/:_id', {
 	name: 'course',
 	action(params){ 
-		ReactLayout.render(Main, {content: <CourseList courseId={params._id} />});
+		ReactLayout.render(Main, { courseId: params._id });
 	}
 });
 
