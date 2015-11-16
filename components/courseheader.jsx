@@ -8,12 +8,15 @@ CourseHeader = React.createClass({
 		Meteor.call('setCourseDuration', this.props.course._id, 'I am so set!');
 	},
 
+	buildURL(){
+		var courseURL = "/overview/" + this.props.course._id;
+		return courseURL;
+	},
 
 	render(){
-
 		return (
 			<li> 
-				<a className="row" href={FlowHelpers.pathFor('/overview', { '_id': this.props.course._id })} onClick={this.props.changeContent}>
+				<a className="row" href={this.buildURL()}>
 					<div className="col s12">
 						<div className="card cyan ligthen-5">
 							<div className="card-content text-cyan text-darken-4">
@@ -38,31 +41,7 @@ CourseHeader = React.createClass({
 			</li>
 			);
 	},
-
-	// handleChange() {
-	// 	this.setState({title: title});
-	// },
-
-	// handleSubmit(){
-	// 	event.preventDefault();
-	// 	var title = ReactDOM.findDOMNode(this.refs.text).value.trim();
-	// 	Meteor.call('addCourse', text);
-	// },
-
-	// enableEditing(){
-	// 	this.setState({editing: true});
-	// }
-
 });
 
-///
-								// 	<ContentEditable 
-									// 	tagName="div"
-									// 	className="title-field"
-									// 	onChange={this.handleChange}
-									// 	text={this.state.title}
-									// 	placeholder={true}
-									// 	autofocus={true}
-									// 	maxLength={200}
-									// 	editing={this.state.editing}
-									// />
+//onClick={this.props.changeContent}
+

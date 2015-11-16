@@ -16,7 +16,8 @@ FlowRouter.route('/', {
 FlowRouter.route('/overview', {
 	name: 'overview',
 	action(){ 
-		ReactLayout.render(Main, { content:<CourseList /> });
+		ReactLayout.render(Main, { content:<CourseList contentOverview='overview'/> });
+		
 	}
 });
 
@@ -26,13 +27,4 @@ FlowRouter.route('/overview/:_id', {
 		ReactLayout.render(Main, {content: <CourseList courseId={params._id} />});
 	}
 });
-
-let pathFor = ( path, params ) => {
-  let query = params && params.query ? FlowRouter._qs.parse( params.query ) : {};
-  return FlowRouter.path( path, params, query );
-};
-
-FlowHelpers = {
-  pathFor: pathFor
-};
 

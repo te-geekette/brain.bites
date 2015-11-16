@@ -4,18 +4,17 @@ CourseList = React.createClass({
 
 	getInitialState(){
 		return {
-			displayState: 'hidden',
-			displayContent: 'overview'
+			displayState: 'hidden'
+			// displayContent: this.props.contentOverview
 		}
 	},
 
 	getMeteorData(){
-		var courseId = "bYNTjfa8RptbvmAy5" // this.props.courseId;
-		console.log(courseId);
+		var courseId = this.props.courseId;
 
 		return {
 			courses: Courses.find({}, {sort: {createdAt: -1}}).fetch(),
-			contentItems: ContentItems.find({}),
+			contentItems: ContentItems.find({}).fetch(),
 			singleCourse: Courses.findOne({ _id: courseId})
 		}
 	},
@@ -40,15 +39,13 @@ CourseList = React.createClass({
 		this.setState({displayState: 'hidden'});
 	},
 
-	changeDisplayContent(){
-		this.setState({displayContent: (this.state.displayContent === 'overview'? 'content': 'overview')});
-	},
+	// changeDisplayContent(){
+	// 	this.setState({displayContent: (this.state.displayContent === 'overview'? 'content': 'overview')});
+	// },
 
 
 	content(){
-		var isOverview = this.state.displayContent === 'overview';
-		console.log(isOverview);
-		// Syntax might be off here. If it doesn't work, try with if/else
+		var isOverview = this.props.contentOverview === 'overview';
 		return (isOverview ? 
 			<List className={this.state.displayState} onClick={this.cancelCreate} render={this.renderCourses}/> :
 			<Course course={this.data.singleCourse} className={this.state.displayState} onClick={this.cancelCreate} render={this.renderContent} />
