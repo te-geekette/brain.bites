@@ -5,7 +5,6 @@ CourseList = React.createClass({
 	getInitialState(){
 		return {
 			displayState: 'hidden'
-			// displayContent: this.props.contentOverview
 		}
 	},
 
@@ -38,11 +37,6 @@ CourseList = React.createClass({
 	cancelCreate(){
 		this.setState({displayState: 'hidden'});
 	},
-
-	// changeDisplayContent(){
-	// 	this.setState({displayContent: (this.state.displayContent === 'overview'? 'content': 'overview')});
-	// },
-
 
 	content(){
 		var isOverview = this.props.contentOverview === 'overview';
