@@ -31,7 +31,7 @@ Meteor.methods({
 			createdAt: new Date(),
 			owner: Meteor.userId(),
 			username: Meteor.user().username,
-			duration: 'No duration set yet'
+			duration: '12%'
 		});
 	},
 

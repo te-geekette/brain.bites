@@ -9,6 +9,8 @@ CourseHeader = React.createClass({
 		return courseURL;
 	},
 
+
+
 	render(){
 		return (
 			<li> 
@@ -27,6 +29,7 @@ CourseHeader = React.createClass({
 									<div className="col s6">
 	          								<p>Estimated Course Duration: {this.props.course.duration} </p> 
 											<p>Course Progress:</p>
+											<Progress duration={this.props.course.duration} />
 	        						</div>
 								</div>
 							</div>
@@ -40,6 +43,7 @@ CourseHeader = React.createClass({
 
 // Test and practice functions to, will be removed later:
 	// setDuration(){
-	// 	Meteor.call('setCourseDuration', this.props.course._id, 'I am so set!');
+	// 	Meteor.call('setCourseDuration', this.props.course._id, '18%');
 	// },
+
 
