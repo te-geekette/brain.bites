@@ -43,3 +43,7 @@ main {
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
+
+a .row {
+  color: #37474f ;
+}

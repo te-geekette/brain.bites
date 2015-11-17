@@ -14,7 +14,7 @@ CourseHeader = React.createClass({
 			<li> 
 				<a className="row" href={this.buildURL()}>
 					<div className="col s12">
-						<div className="card cyan ligthen-5">
+						<div className="card light-blue lighten-2">
 							<div className="card-content text-cyan text-darken-4">
 
 								<div className="row">

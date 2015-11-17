@@ -8,6 +8,6 @@ AccountsUIWrapper = React.createClass({
         Blaze.remove(this.view);
     },
     render(){
-    	return ( <a className='dropdown-button btn' href='#' data-activates='dropdown1' ref='login' align="center" />	);
+    	return ( <a className='blue-grey lighten-4 dropdown-button btn' href='#' data-activates='dropdown1' ref='login' align="center" />	);
     }
 });

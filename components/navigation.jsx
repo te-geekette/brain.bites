@@ -1,7 +1,7 @@
 Navigation = React.createClass({
 	render(){
 		return (
-			<nav>
+			<nav className="blue-grey darken-1">
 				<ul id="nav-links" className='right'>
 					<li><AccountsUIWrapper /></li>
 					<a href="#" className="brand-logo">Logo</a>

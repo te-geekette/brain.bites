@@ -41,7 +41,6 @@ Main = React.createClass({
 	},
 
 	// NOTE: This might not be the nicest way to work with nested components. I probably should have chosen a router that makes better use of nested components.
-	// ToDo: Try passing those directly into the route and access the props and states via this.(..) in the List / Course component directly.... Probably won't work.  
 	content(){
 		var isOverview = this.props.contentOverview === 'overview';
 		return (isOverview ? 
@@ -62,7 +61,7 @@ Main = React.createClass({
 					<div className='container'>
 						{this.content()}
 						<div className="fixed-action-btn" onClick={this.showCreate}>
-	    					<a className="btn-floating btn-large red">
+	    					<a className="btn-floating btn-large light-blue darken-4">
 	      						<span className="large material-icons">add</span>
 	    					</a>
 	    				</div>
