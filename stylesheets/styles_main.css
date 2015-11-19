@@ -100,3 +100,11 @@ a .row {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
+  /*  setCourseProgress(courseId, completedTime){
+      var course= Courses.find({ _id: courseId});
+      if (course.progress) {
+        Course.update(courseId, { $inc: { progress: -completedTime }});
+      }
+    }*/
+
+

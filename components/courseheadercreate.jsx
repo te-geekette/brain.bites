@@ -12,7 +12,7 @@ CourseHeaderCreate = React.createClass({
 
 	render(){
 		return (
-			<li className={this.props.className}>
+			<li className={this.props.displayClass}>
 				<div className="row">
 					<div className="col s12">
 						<div className="card cyan ligthen-5">
@@ -36,7 +36,7 @@ CourseHeaderCreate = React.createClass({
 									<button className="waves-effect waves-light btn" type="button" onClick={this.props.onClick}>Cancel</button>
 									<button className="waves-effect waves-light btn" type="submit" onClick={this.props.onClick}>Save</button>
 								</form>
-
+								
 							</div>
 						</div>
 					</div>

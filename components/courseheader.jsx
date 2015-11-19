@@ -9,7 +9,9 @@ CourseHeader = React.createClass({
 		return courseURL;
 	},
 
-
+	handleDelete(){
+		Meteor.call('deleteCourse', this.props.course._id);
+	},
 
 	render(){
 		return (
@@ -20,7 +22,7 @@ CourseHeader = React.createClass({
 							<div className="card-content text-cyan text-darken-4">
 
 								<div className="row">
-									<div className="card-title col s12">{this.props.course.title}</div>
+									<div className="card-title col s11">{this.props.course.title}</div>
 								</div>
 								<div className="row">
 									<div className="col s6">
@@ -29,13 +31,14 @@ CourseHeader = React.createClass({
 									<div className="col s6">
 	          								<p>Estimated Course Duration: {this.props.course.duration} </p> 
 											<p>Course Progress:</p>
-											<Progress duration={this.props.course.duration} />
+											<Progress progress={this.props.course.progress} />
 	        						</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</a>
+				<button className="card-title col s1" onClick={this.handleDelete}>delete</button>
 			</li>
 		);
 	},

@@ -8,12 +8,10 @@ Course = React.createClass({
 		return(
 				<ul>
 					<CourseHeader course={this.props.course}/>
+					<ContentCreate course={this.props.course}  displayClass={this.props.displayClass} onClick={this.props.onClick} />
 					{this.props.render()}
-					<ContentCreate />
 				</ul>
 		);
 	}
 });
 
-// TODO: 
-// Add props to content create

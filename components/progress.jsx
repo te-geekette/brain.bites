@@ -1,10 +1,12 @@
 Progress = React.createClass({
 
+
+
 	showProgress(){
 		var progress = document.getElementById('bar-percentage');
 		var percentage = Math.ceil(progress.dataset.percentage);
 
-		progress.textContent(percentage); 
+		// progress.textContent(percentage); 
 		progress.nextSibling.children.style.width = percentage * '%'; 
 	},
 
@@ -12,7 +14,7 @@ Progress = React.createClass({
 		return(
 			<div id="bar-1" className="bar-main-container light-blue accent-4">
     			<div className="wrap">
-	      			<div className="bar-percentage" data-percentage={this.props.duration} >{this.props.duration}</div>
+	      			<div className="bar-percentage" data-percentage={this.props.progress} >{this.props.progress}</div>
 	      			<div className="bar-container">
 	        			<div className="bar"></div>
 	      			</div>

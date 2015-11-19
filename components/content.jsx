@@ -1,5 +1,49 @@
 Content = React.createClass({
+
+	propTypes: {
+		contentItem: React.PropTypes.object.isRequired
+	},
+
+	toggleChecked(){
+		var completedTime = this.props.contentItem.duration; 
+		var courseId = this.props.contentItem.courseId;
+		
+		if (this.props.contentItem.checked) {
+			completedTime = -completedTime;
+		}
+
+		Meteor.call('setCourseProgress', this.props.contentItem.courseId, completedTime);
+		Meteor.call('setContentChecked', this.props.contentItem._id, !this.props.contentItem.checked);
+		
+	},
+
+	handleDelete(){
+		Meteor.call('deleteContent', this.props.contentItem._id, this.props.contentItem.courseId, this.props.contentItem.duration, this.props.contentItem.checked);
+	},
+
 	render(){
-		return(<div>Contente</div>);
+		const checkedClass = (this.props.contentItem.checked ? 'checked' : '');
+		return(
+			<li className={checkedClass}>
+				<div id="content" className="row">
+					<div className ="move col s1">Move</div>
+					
+					<input className ="checkbox col s1" style={{visibility: "visible", position: "inherit"}}
+						type="checkbox"
+						readOnly={true}
+						checked={this.props.contentItem.checked}
+						onClick={this.toggleChecked} />
+					
+					<a href={this.props.contentItem.link} target="_blank" className ="content-title col s6">{this.props.contentItem.title}</a>
+					<div className ="content-duration col s2">{this.props.contentItem.duration}</div>
+					<button className ="star col s2" onClick={this.handleDelete}>Delete</button> 
+				</div>
+			</li>
+		);
 	}
 });
+
+// Star could also be an Edit button for now
+// TODO:
+// Icons & Button for 'Move', 'Edit'
+

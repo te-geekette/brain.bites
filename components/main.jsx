@@ -14,7 +14,7 @@ Main = React.createClass({
 
 		return {
 			courses: Courses.find({}, {sort: {createdAt: -1}}).fetch(),
-			contentItems: ContentItems.find({}).fetch(),
+			contentItems: ContentItems.find({courseId: courseId}).fetch(),
 			singleCourse: Courses.findOne({ _id: courseId})
 		}
 	},
@@ -44,8 +44,8 @@ Main = React.createClass({
 	content(){
 		var isOverview = this.props.contentOverview === 'overview';
 		return (isOverview ? 
-			<List className={this.state.displayState} onClick={this.cancelCreate} render={this.renderCourses}/> :
-			<Course course={this.data.singleCourse} className={this.state.displayState} onClick={this.cancelCreate} render={this.renderContent} />
+			<List displayClass={this.state.displayState} onClick={this.cancelCreate} render={this.renderCourses}/> :
+			<Course course={this.data.singleCourse} displayClass={this.state.displayState} onClick={this.cancelCreate} render={this.renderContent} />
 		);
 	},
 
