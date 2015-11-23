@@ -12,8 +12,6 @@ ContentCreate = React.createClass({
 		// var updatedCourseDuration = courseDuration + duration; 
 
 		Meteor.call('addContent', title, link, duration, courseId);
-		Meteor.call('setCourseDuration', courseId, duration);
-
 	},
 
 	render(){
@@ -33,7 +31,7 @@ ContentCreate = React.createClass({
 							<input type="text" ref='contentTitle' placeholder="Give your content a descriptive headline" required />
 						</div>
 						<div className ="content-duration col s4">
-							<input type="number" ref='contentDuration' placeholder="0.5" />
+							<input type="number" ref='contentDuration' placeholder="0.5" required />
 							<div>A Dropdown </div>
 						</div>
 					</div>

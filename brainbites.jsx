@@ -43,6 +43,7 @@ Meteor.methods({
 			owner: Meteor.userId(),
 			username: Meteor.user().username,
 			duration: 0,
+			completedContent: 0,
 			progress: 0
 		});
 	},
@@ -51,12 +52,12 @@ Meteor.methods({
 		Courses.update(courseId, { $inc: { duration: duration} });
 	},
 
-	setCourseProgress(courseId, completedTime){
+	setCourseProgress(courseId){
     	var course= Courses.findOne(courseId);
-    	if(course.duration) {
-    		var progress= parseInt(completedTime / course.duration * 100) ;
-    		Courses.update(courseId, { $inc: { progress: progress }});
-    	}
+    	var progress = parseInt(course.completedContent / course.duration * 100); 
+
+    	Courses.update(courseId, { $set: { progress: progress }});
+
     },
 
     deleteCourse(courseId){
@@ -74,22 +75,42 @@ Meteor.methods({
 			createdAt: new Date(),
 			owner: Meteor.userId()
 		});
+		Meteor.call('setCourseDuration', courseId, duration);
+		Meteor.call('setCourseProgress', courseId);
 	},
 
-	setContentChecked(contentId, setChecked) {
+	setContentChecked(contentId, setChecked, courseId, completedTime) {
         ContentItems.update(contentId, { $set: {checked: setChecked} });
+
+        Courses.update(courseId, { $inc: { completedContent: completedTime }});
+
+        Meteor.call('setCourseProgress', courseId);
     },
 
-    // Problem: Something is weird here. It runs the calculation but with odd numbers ... 
-    
-    deleteContent(contentId, courseId, contentDuration, contentIsChecked){
-    	Meteor.call('setCourseDuration', courseId, -contentDuration);
-    	if(contentIsChecked) {
-    		Meteor.call('setCourseProgress', courseId, -contentDuration);
+    deleteContent(contentId, courseId, contentDuration){
+    	
+    	var course = Courses.findOne(courseId);
+    	var content = ContentItems.findOne(contentId);
+
+    	var newDuration = course.duration + contentDuration; 
+
+    	if (newDuration != 0) {
+
+    		Meteor.call('setCourseDuration', courseId, contentDuration);
+
+    		if (content.checked && course.completedContent > 0) {
+				Courses.update(courseId, { $inc: { completedContent: contentDuration }});
+			} 
+		
+    		Meteor.call('setCourseProgress', courseId);
+
+    	} else { 
+    		Meteor.call('setCourseDuration', courseId, contentDuration);
+    		Courses.update(courseId, { $set: { completedContent: 0}});
+    		Courses.update(courseId, { $set: { progress: 0 }});
     	}
 
-    	ContentItems.remove(contentId);
-
+		ContentItems.remove(contentId);
     }
 
 });

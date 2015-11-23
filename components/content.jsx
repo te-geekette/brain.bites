@@ -12,13 +12,11 @@ Content = React.createClass({
 			completedTime = -completedTime;
 		}
 
-		Meteor.call('setCourseProgress', this.props.contentItem.courseId, completedTime);
-		Meteor.call('setContentChecked', this.props.contentItem._id, !this.props.contentItem.checked);
-		
+		Meteor.call('setContentChecked', this.props.contentItem._id, !this.props.contentItem.checked, courseId, completedTime);
 	},
 
 	handleDelete(){
-		Meteor.call('deleteContent', this.props.contentItem._id, this.props.contentItem.courseId, this.props.contentItem.duration, this.props.contentItem.checked);
+		Meteor.call('deleteContent', this.props.contentItem._id, this.props.contentItem.courseId, -this.props.contentItem.duration);
 	},
 
 	render(){
