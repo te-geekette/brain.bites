@@ -2,7 +2,7 @@ Progress = React.createClass({
 
 	render(){
 		return(
-			<div id="bar-1" className="bar-main-container light-blue accent-4">
+			<div id="bar-1" className="col s6 push-s2 bar-main-container light-blue accent-4">
     			<div className="wrap">
 	      			<div className="bar-percentage" data-percentage={this.props.progress} >{this.props.progress}%</div>
 	      			<div className="bar-container">

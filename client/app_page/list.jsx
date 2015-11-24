@@ -1,10 +1,10 @@
 List = React.createClass({
 	render(){
 		return(
-				<ul>
+				<div className="row">
 					<CourseHeaderCreate displayClass={this.props.displayClass} onClick={this.props.onClick} />
 					{this.props.render()}
-				</ul>
+				</div>
 		);
 	}
 });

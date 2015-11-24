@@ -3,4 +3,5 @@
 
 	Meteor.startup(function () {
 		FlowRouter.initialize();
+
 	});

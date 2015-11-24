@@ -5734,7 +5734,7 @@ small {
       max-height: 60%;
       overflow: hidden; }
     .card.small .card-content, .card.medium .card-content, .card.large .card-content {
-      max-height: 40%;
+      max-height: 80%;
       overflow: hidden; }
     .card.small .card-action, .card.medium .card-action, .card.large .card-action {
       position: absolute;
@@ -5771,14 +5771,14 @@ small {
     border-radius: 0 0 2px 2px; }
     .card .card-content p {
       margin: 0;
-      color: inherit; }
+      /*color: inherit;*/ }
     .card .card-content .card-title {
       line-height: 48px; }
   .card .card-action {
     border-top: 1px solid rgba(160, 160, 160, 0.2);
-    padding: 20px; }
+    /*padding: 20px;*/ }
     .card .card-action a {
-      color: #ffab40;
+      /*color: #ffab40;*/
       margin-right: 20px;
       -webkit-transition: color .3s ease;
       -moz-transition: color .3s ease;
