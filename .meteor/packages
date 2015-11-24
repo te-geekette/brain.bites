@@ -18,7 +18,6 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 react
 kadira:flow-router
-materialize:materialize
 accounts-password
 accounts-google
 accounts-ui
