@@ -35,6 +35,13 @@ Navigation = React.createClass({
 	}
 });
 
+// TODO
+// 1. Revert to original structure where the UL lives inside the nav
+// 2. Is the burger icon properly visible?
+// 3. Where is the burger when the menu is open on mobile?
+// 4. proper styling for the burger 
+
+
 			// <nav className="blue-grey darken-1">
 			// 	<ul id="nav-links" className='right'>
 			// 		<li><AccountsUIWrapper /></li>

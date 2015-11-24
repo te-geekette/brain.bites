@@ -41,7 +41,10 @@ Content = React.createClass({
 	}
 });
 
-// Star could also be an Edit button for now
+
 // TODO:
-// Icons & Button for 'Move', 'Edit'
+// 1. Icons & Button for 'Move', 'Edit', 'Star'
+// 2. Turn the content into cards 
+// 3. Style the elements of the cards
+// 4. Make sure they react properly on mobile
 

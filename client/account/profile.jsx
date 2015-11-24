@@ -13,3 +13,6 @@ Profile = React.createClass({
 		);
 	}
 });
+
+// TODO:
+// 1. Build an overlay-component to manage the profile: Edit passwort, upload picture

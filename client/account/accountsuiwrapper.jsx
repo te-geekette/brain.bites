@@ -12,4 +12,5 @@ AccountsUIWrapper = React.createClass({
     }
 });
 
-// className='blue-grey lighten-4 dropdown-button btn'
+// ToDo:
+// 1. Build a custom login component 

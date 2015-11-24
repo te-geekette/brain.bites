@@ -29,7 +29,7 @@ CourseHeader = React.createClass({
 										<div>{this.props.course.description}</div>
 									</div>
 									<div className="col s6">
-	          								<p>Estimated Course Duration: {this.props.course.duration} </p> 
+	          								<p>Estimated Course Duration: {this.props.course.duration} min </p> 
 											<p>Course Progress:</p>
 											<Progress progress={this.props.course.progress} />
 	        						</div>
@@ -44,9 +44,11 @@ CourseHeader = React.createClass({
 	},
 });
 
-// Test and practice functions to, will be removed later:
-	// setDuration(){
-	// 	Meteor.call('setCourseDuration', this.props.course._id, '18%');
-	// },
+// TODO:
+// 1. Make only headline and body clickable
+// 2. Carve out a small area next to the headline that contains the delete (and edit) option 
+// 3. Make sure the progress bar scales properly on mobile
+// 4. Convert minutes into hours
+// 5. Hide the delete and edit buttons when inside course (possible?)
 
 
