@@ -5052,7 +5052,7 @@ nav ul a span.badge {
   content: "\e8f5"; }
 
 .container {
-  margin: 0 auto;
+  margin: 50px auto;
   max-width: 1280px;
   width: 90%; }
 

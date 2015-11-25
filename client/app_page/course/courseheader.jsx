@@ -21,27 +21,34 @@ CourseHeader = React.createClass({
 
 	render(){
 
-		var durationInHours = (this.props.course.duration/60).toFixed(2);  
+		var durationInHours = (this.props.course.duration/60).toFixed(1);  
 
 		return (
 			<div className={this.state.grid}> 	
-				<div className="card small light-blue darken-3">
+				<div className={this.props.smallCard +" card light-blue darken-3"}>
 					<div className="card-content text-cyan text-darken-4">
 						<a  href={this.buildURL()}>
 							<div className="row">
 								<div className="card-title col s8">{this.props.course.title}</div>
-								<div className="col s4 chip">{durationInHours} hours
-									<i className="small material-icons">query_builder</i>
+								<div className="col s4">
+									<div className={!this.props.hideComponentsClass + " chip"}>
+										{durationInHours} hrs
+										<i className=" small material-icons">query_builder</i>
+									</div>
 								</div>
 							</div>
 							<p>{this.props.course.description}</p>
-							
 						</a>
-						<div className="card-action" style={{'background':'white'}}>
-							<div className="row action-row">
-								<a href='#' className="col s1">Edit</a>
-								<a onClick={this.handleDelete} className="col s1">Delete</a>
-								<Progress progress={this.props.course.progress} />
+					</div>
+					<div className="card-action" style={{'background':'white'}}>
+						<div className="row action-row">
+							
+							<a href='#' className={!this.props.hideComponentsClass + " col s1"}>Edit</a>
+							<a onClick={this.handleDelete} className={!this.props.hideComponentsClass + " col s1"}>Delete</a>
+							<Progress progress={this.props.course.progress} colOffset={this.props.colOffset} />
+							<div className={this.props.hideComponentsClass + " chip"}>
+									{durationInHours} hrs
+									<i className=" small material-icons">query_builder</i>
 							</div>
 						</div>
 					</div>

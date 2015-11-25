@@ -5,7 +5,9 @@ Main = React.createClass({
 
 	getInitialState(){
 		return {
-			displayState: 'hidden'
+			displayState: 'hidden',
+			reducedHeaderState: true,
+			reducedHeaderSize: 'small'
 		}
 	},
 
@@ -22,7 +24,7 @@ Main = React.createClass({
 	// DEFINE WHICH CONTENT TO DISPLAY: Course Overview with list of courses, Single Course with content, Create Course or Create Content states
 	renderCourses(){
 		return this.data.courses.map((course) => {
-			return <CourseHeader key={course._id} course={course} changeContent={this.changeDisplayContent}  />;
+			return <CourseHeader key={course._id} course={course} changeContent={this.changeDisplayContent} hideComponentsClass={this.state.reducedHeaderState} smallCard={this.state.reducedHeaderSize} colOffset="push-s2" />;
 		});
 
 	},
@@ -45,7 +47,7 @@ Main = React.createClass({
 		var isOverview = this.props.contentOverview === 'overview';
 		return (isOverview ? 
 			<List displayClass={this.state.displayState} onClick={this.cancelCreate} render={this.renderCourses}/> :
-			<Course course={this.data.singleCourse} displayClass={this.state.displayState} onClick={this.cancelCreate} render={this.renderContent} />
+			<Course course={this.data.singleCourse} displayClass={this.state.displayState} onClick={this.cancelCreate} hideComponentsClass={this.state.reducedHeaderState} render={this.renderContent} />
 		);
 	},
 
@@ -61,7 +63,7 @@ Main = React.createClass({
 					<div className='container'>
 						{this.content()}
 						<div className="fixed-action-btn" onClick={this.showCreate}>
-	    					<a className="btn-floating btn-large light-blue darken-4">
+	    					<a className="btn-floating btn-large light-blue darken-3">
 	      						<span className="large material-icons">add</span>
 	    					</a>
 	    				</div>

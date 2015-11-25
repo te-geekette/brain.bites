@@ -7,7 +7,7 @@ Course = React.createClass({
 	render(){
 		return(
 				<ul>
-					<CourseHeader course={this.props.course}/>
+					<CourseHeader course={this.props.course} hideComponentsClass={!this.props.hideComponentsClass}/>
 					<ContentCreate course={this.props.course}  displayClass={this.props.displayClass} onClick={this.props.onClick} />
 					{this.props.render()}
 				</ul>
