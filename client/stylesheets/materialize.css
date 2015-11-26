@@ -5541,10 +5541,10 @@ nav {
 
 @media only screen and (min-width : 601px) {
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-    height: 64px;
-    line-height: 64px; }
+    height: 50px;
+    line-height: 50px; }
   .navbar-fixed {
-    height: 64px; } }
+    height: 50px; } }
 
 @font-face {
   font-family: "Roboto";
@@ -6744,10 +6744,10 @@ form p:last-child {
   margin-bottom: 0; }
 
 /* Remove default checkbox */
-[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+/*[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
   position: absolute;
   left: -9999px;
-  visibility: hidden; }
+  visibility: hidden; }*/
 
 [type="checkbox"] {
   /* checkbox aspect */ }
@@ -6755,7 +6755,7 @@ form p:last-child {
     position: relative;
     padding-left: 35px;
     cursor: pointer;
-    display: inline-block;
+    display: inline; /*originally: inline-block; adapted for content checkbox */
     height: 25px;
     line-height: 25px;
     font-size: 1rem;
@@ -6768,7 +6768,7 @@ form p:last-child {
     -ms-user-select: none;
     /* IE10+ */ }
   [type="checkbox"] + label:before {
-    content: '';
+    /*content: '';*/
     position: absolute;
     top: 0;
     left: 0;
@@ -6787,7 +6787,7 @@ form p:last-child {
     border: none;
     background-color: rgba(0, 0, 0, 0.26); }
 
-[type="checkbox"]:checked + label:before {
+/*[type="checkbox"]:checked + label:before {
   top: -4px;
   left: -3px;
   width: 12px;
@@ -6806,7 +6806,7 @@ form p:last-child {
   -moz-transform-origin: 100% 100%;
   -ms-transform-origin: 100% 100%;
   -o-transform-origin: 100% 100%;
-  transform-origin: 100% 100%; }
+  transform-origin: 100% 100%; }*/
 [type="checkbox"]:checked:disabled + label:before {
   border-right: 2px solid rgba(0, 0, 0, 0.26);
   border-bottom: 2px solid rgba(0, 0, 0, 0.26); }

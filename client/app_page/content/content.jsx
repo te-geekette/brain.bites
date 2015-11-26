@@ -24,17 +24,31 @@ Content = React.createClass({
 		return(
 			<li className={checkedClass}>
 				<div id="content" className="row">
-					<div className ="move col s1">Move</div>
-					
-					<input className ="checkbox col s1" style={{visibility: "visible", position: "inherit"}}
-						type="checkbox"
-						readOnly={true}
-						checked={this.props.contentItem.checked}
-						onClick={this.toggleChecked} />
-					
-					<a href={this.props.contentItem.link} target="_blank" className ="content-title col s6">{this.props.contentItem.title}</a>
-					<div className ="content-duration col s2">{this.props.contentItem.duration}</div>
-					<button className ="star col s2" onClick={this.handleDelete}>Delete</button> 
+					<div className="card">
+						<div className="card-content">
+							
+							
+							
+							<input type="checkbox" id="check-me" checked={this.props.contentItem.checked} />
+							<label for="check-me" onClick={this.toggleChecked} >
+								<span className="check"></span>
+								<span className="box"></span>
+							</label>
+							
+							
+							<a href={this.props.contentItem.link} target="_blank" className ="content-title col s9">{this.props.contentItem.title}</a>
+							
+							<div className ="chip">
+								{this.props.contentItem.duration} min
+								<i className=" small material-icons">query_builder</i>
+							</div>
+
+						</div>
+						<div className="card-action">
+							<a>move</a>
+							<a onClick={this.handleDelete}>delete</a>
+						</div>
+					</div>
 				</div>
 			</li>
 		);
@@ -43,8 +57,6 @@ Content = React.createClass({
 
 
 // TODO:
-// 1. Icons & Button for 'Move', 'Edit', 'Star'
-// 2. Turn the content into cards 
-// 3. Style the elements of the cards
 // 4. Make sure they react properly on mobile
 
+	// <div id="check-awesome" className="form-group col s1">
