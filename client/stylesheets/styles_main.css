@@ -217,7 +217,7 @@ a .row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 10px 20px 15px;
+  padding: 20px 10px 15px 15px;
 
 }
 
@@ -238,7 +238,7 @@ a .row {
   padding-bottom: 0;
 }
 
-#content .card .card-action a{
+#content .card .card-action a {
   font-size: 11px; 
   color: #9E9E9E;
   cursor:pointer;
@@ -302,4 +302,81 @@ input[type=checkbox]:checked ~ label .check {
   transform           :scale(1) rotate(45deg);
 }
 
+/* ---- Course Create ------ */ 
+
+#course-create-title {
+  height: 120 %; 
+  background-color: rgba(236, 239, 241, 0.55);
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#course-create-title input {
+  line-height: 38px;
+  color: white;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+#course-create-description {
+  height: 120 %; 
+  background-color: rgba(236, 239, 241, 0.55);
+  border-radius: 3px;
+  padding: 10px; 
+}
+
+#course-create-description input {
+  color: white;
+  font-weight: 300;
+}
+
+#createActions {
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#contentHeadline {
+  margin-left: 10px;
+  font-weight: 300;
+  color: rgba(128, 128, 128, 0.19);
+}
+
+/* ---- Content Create --- */
+
+
+
+#content-create label {
+  padding-left: 0px;
+  color: #0277BD;
+  font-size: 14px; 
+  cursor: none;
+}
+
+#content-create .card .create-action {
+  display: flex;
+  align-items:center;
+  justify-content: flex-end;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #0277BD
+}
+
+#content-create .card .card-action a {
+  color: #ffab40;
+  cursor: pointer;
+}
+
+#content-create .card .card-action a .create-cancel {
+  color: rgba(255, 171, 64, 0.77);
+}
+
+
+/*#content-create .card .create-action a {
+  font-size: 14px; 
+  color: #0277bd;
+  cursor: pointer;
+}*/
+  
 

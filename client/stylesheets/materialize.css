@@ -5052,7 +5052,7 @@ nav ul a span.badge {
   content: "\e8f5"; }
 
 .container {
-  margin: 50px auto;
+  margin: 10px auto 50px auto;
   max-width: 1280px;
   width: 90%; }
 
@@ -6461,23 +6461,23 @@ label {
    Text Inputs + Textarea
 ****************************/
 ::-webkit-input-placeholder {
-  color: #d1d1d1; }
+  color: #0277BD; }
 
 :-moz-placeholder {
   /* Firefox 18- */
-  color: #d1d1d1; }
+  color: #0277BD; }
 
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: #d1d1d1; }
+  color: #0277BD; }
 
 :-ms-input-placeholder {
-  color: #d1d1d1; }
+  color: #0277BD; }
 
 input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #9e9e9e;
+  border-bottom: 1px solid #0277BD;
   border-radius: 0;
   outline: none;
   height: 3rem;

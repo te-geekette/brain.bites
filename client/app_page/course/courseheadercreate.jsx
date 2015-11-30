@@ -8,12 +8,40 @@ CourseHeaderCreate = React.createClass({
 
 		Meteor.call('addCourse', title, description);
 
+		this.props.onClick();
+
 	},
 
 	render(){
 		return (
-			<li className={this.props.displayClass}>
-				<div className="row">
+			<div className={this.props.displayClass +' col s12 m6'}> 	
+				<div className="small card light-blue darken-3">
+					<form>
+						<div className="card-content text-cyan text-darken-4">
+							<div id="course-create-title">
+								<input type="text" ref='courseTitle' placeholder="Give your course a title" />
+							</div>
+							<div id="course-create-description">
+								<input type="text" ref='courseDescription' placeholder="Describe your course" />
+							</div>
+							
+						</div>
+						<div className="card-action" style={{'background':'white'}}>
+							<div id="createActions" className="row action-row">
+								<a onClick={this.props.onClick} className="creatCancel col s2">Cancel</a>
+								<a onClick={this.handleSubmit} className="createSave col s2">Save</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+		);
+	},
+});
+
+
+/* 
 					<div className="col s12">
 						<div className="card cyan ligthen-5">
 							<div className="card-content text-cyan text-darken-4">
@@ -39,9 +67,11 @@ CourseHeaderCreate = React.createClass({
 								
 							</div>
 						</div>
-					</div>
-				</div>
-			</li>
-		);
-	},
-});
+					</div> 
+*/
+
+
+
+
+
+
