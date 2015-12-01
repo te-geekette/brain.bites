@@ -1,5 +1,11 @@
 ContentCreate = React.createClass({
 
+	clearContentForm(){
+		ReactDOM.findDOMNode(this.refs.contentTitle).value = "";
+		ReactDOM.findDOMNode(this.refs.contentLink).value = "";
+		ReactDOM.findDOMNode(this.refs.contentDuration).value ="";
+	},
+
 	handleSubmit(event){
 		event.preventDefault();
 
@@ -14,6 +20,7 @@ ContentCreate = React.createClass({
 		Meteor.call('addContent', title, link, duration, courseId);
 
 		this.props.onClick();
+		this.clearContentForm();
 	},
 
 	render(){
@@ -25,19 +32,19 @@ ContentCreate = React.createClass({
 							<div className="card-content">
 								<div className ="content-title row">
 									<div className="col s12">
-										<label for="contentTitle">Give your content a descriptive headline</label>
+										<label htmlFor="contentTitle">Give your content a descriptive headline</label>
 										<input type="text" ref='contentTitle' required />
 									</div>
 								</div>
 								<div className ="row">
 									<div className="content-link col s9">
-										<label for="contentLink">Enter the URL of your course content here</label>
+										<label htmlFor="contentLink">Enter the URL of your course content here</label>
 										<input type="url" ref='contentLink' required />
 									</div>
 									
 									<div className="col s3">
-										<label for="contentLink">Duration (in min)?</label>
-										<input type="number" ref='contentDuration' required />
+										<label htmlFor="contentLink">Duration (in min)</label>
+										<input type="number" ref='contentDuration' />
 									</div>
 								
 								</div>

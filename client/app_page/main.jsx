@@ -1,7 +1,7 @@
 Main = React.createClass({
 	
 	// INITIAL SETUP 
-	mixins: [ReactMeteorData],
+	mixins: [ReactMeteorData, SortableMixin],
 
 	getInitialState(){
 		return {
@@ -29,9 +29,11 @@ Main = React.createClass({
 
 	},
 	renderContent(){
+
 		return this.data.contentItems.map((contentItem) => {
 			return <Content key={contentItem._id} contentItem={contentItem} />;
 		});
+		
 	},
 
 	showCreate(){

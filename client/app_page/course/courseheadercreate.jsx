@@ -1,5 +1,10 @@
 CourseHeaderCreate = React.createClass({
 
+	clearCourseForm(){
+		ReactDOM.findDOMNode(this.refs.courseTitle).value = "";
+		ReactDOM.findDOMNode(this.refs.courseDescription).value = "";
+	},
+
 	handleSubmit(event){
 		event.preventDefault();
 
@@ -9,6 +14,7 @@ CourseHeaderCreate = React.createClass({
 		Meteor.call('addCourse', title, description);
 
 		this.props.onClick();
+		this.clearCourseForm();
 
 	},
 

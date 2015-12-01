@@ -1,5 +1,5 @@
 // Content Tests
-if ( MochaWeb != null ) {
+/* if ( MochaWeb != null ) {
 	MochaWeb.testOnly(function() {
 
 		describe('Content Create', function(){
@@ -116,3 +116,4 @@ if ( MochaWeb != null ) {
 // Case 8: Delete last content item 
 // If user deletes the last content item, the progress should show 0%
 
+*/

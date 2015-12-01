@@ -28,7 +28,7 @@ Content = React.createClass({
 						<div className="card-content">
 							
 							<input type="checkbox" id="check-me" checked={this.props.contentItem.checked} />
-							<label for="check-me" onClick={this.toggleChecked} >
+							<label htmlFor="check-me" onClick={this.toggleChecked} >
 								<span className="check"></span>
 								<span className="box"></span>
 							</label>
@@ -43,8 +43,8 @@ Content = React.createClass({
 
 						</div>
 						<div className="card-action">
-							<a style={{ "margin-right": "10px"}}>move</a>
-							<a onClick={this.handleDelete} style={{ "margin-right": "0px"}}>delete</a>
+							<a style={{ "marginRight": "10px"}}>move</a>
+							<a onClick={this.handleDelete} style={{ "marginRight": "0px"}}>delete</a>
 						</div>
 					</div>
 				</div>
