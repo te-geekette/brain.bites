@@ -1,7 +1,7 @@
 Main = React.createClass({
 	
 	// INITIAL SETUP 
-	mixins: [ReactMeteorData, SortableMixin],
+	mixins: [ReactMeteorData],
 
 	getInitialState(){
 		return {
@@ -28,13 +28,13 @@ Main = React.createClass({
 		});
 
 	},
-	renderContent(){
+	// renderContent(){
 
-		return this.data.contentItems.map((contentItem) => {
-			return <Content key={contentItem._id} contentItem={contentItem} />;
-		});
+	// 	return this.data.contentItems.map((contentItem) => {
+	// 		return <Content key={contentItem._id} contentItem={contentItem} />;
+	// 	});
 		
-	},
+	// },
 
 	showCreate(){
 		this.setState({displayState: 'active'});
@@ -49,7 +49,7 @@ Main = React.createClass({
 		var isOverview = this.props.contentOverview === 'overview';
 		return (isOverview ? 
 			<List displayClass={this.state.displayState} onClick={this.cancelCreate} render={this.renderCourses}/> :
-			<Course course={this.data.singleCourse} displayClass={this.state.displayState} onClick={this.cancelCreate} hideComponentsClass={this.state.reducedHeaderState} render={this.renderContent} />
+			<Course course={this.data.singleCourse} contentItems={this.data.contentItems} displayClass={this.state.displayState} onClick={this.cancelCreate} hideComponentsClass={this.state.reducedHeaderState} />
 		);
 	},
 

@@ -4,6 +4,22 @@ Course = React.createClass({
 		course: React.PropTypes.object.isRequired
 	},
 
+	mixins: [SortableMixin],
+
+	getInitialState(){
+		return {
+			items: this.props.contentItems
+		};
+	},
+
+	renderContent(){
+
+		return this.state.items.map((contentItem) => {
+			return <Content key={contentItem._id} contentItem={contentItem} />;
+		});
+		
+	},
+
 	render(){
 		return(
 				<ul>
