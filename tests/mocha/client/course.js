@@ -11,23 +11,26 @@ if ( MochaWeb != null ) {
 
 			before(function(done){
 
-				// The log shows that courseID is correct but I don't get the variable outside of the call to update.
-				// I guess this is just a small closure problem, but I just can't see it right now... 
+				// I just don't get the result out of the Meteor.call.
+				// It seems Sessions are the only way but it just isn't working. 
+				// https://forums.meteor.com/t/react-using-session-vars-vs-props-to-communicate-between-components/11569
 				Meteor.call('addCourse', title, description, function(error, result){
-					courseId = result;
-					console.log(courseId);	
+					Session.set('courseId', result); 	
 				});
 
 				Meteor.call('returnCourse', courseId, function(error, result){
-					course = result;
-					console.log(result);
+					Session.set('course', result);
 				}); 
 
-				console.log(courseId, course);
+				courseId = Session.get('courseId');
+				course = Session.get('course');
+
+				console.log(courseId, course); // courseId is returned now, but course is still undefined
 				done();
 			});
 
 			it ('creates a course', function(done){
+
 				chai.expect(course).to.be.an('object');
 				done();
 			});
