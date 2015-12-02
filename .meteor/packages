@@ -31,3 +31,4 @@ cosmos:browserify
 npm-container
 mike:mocha
 rubaxa:sortable
+accounts-base

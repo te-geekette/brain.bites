@@ -133,10 +133,18 @@ a .row {
 
 #profile-box {
   padding: 0;
+  margin: 0;
   height: 200px;
   background-color: #0277bd;
   position: relative;
 
+}
+
+#account {
+  display: flex;
+  padding-left: 30px;
+  color: white;
+  font-weight: 300;
 }
 
 #profile-component {

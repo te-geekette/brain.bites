@@ -1,5 +1,7 @@
 Profile = React.createClass({
 
+
+
 	render(){
 		return (
 			<div id="profile-component">
@@ -7,7 +9,8 @@ Profile = React.createClass({
 					<img src="/images/profile.png" />
 				</div>
 				<div id="account" className="sidebar-brand">
-					<AccountsUIWrapper />
+					<div>{this.props.userEmail}</div>
+					<i className="mdi-navigation-arrow-drop-down" />
 				</div>
 			</div>
 		);
@@ -16,3 +19,5 @@ Profile = React.createClass({
 
 // TODO:
 // 1. Build an overlay-component to manage the profile: Edit passwort, upload picture
+
+// <AccountsUIWrapper />

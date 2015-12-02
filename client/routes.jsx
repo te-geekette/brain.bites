@@ -6,7 +6,9 @@ FlowRouter.wait();
 
 // Landing page route 
 
-FlowRouter.route('/', {
+var public = FlowRouter.group({});
+
+public.route('/', {
 	name: 'landing',
 	triggersEnter: [function(context, redirect){
 		if(Meteor.user()) {
@@ -14,13 +16,30 @@ FlowRouter.route('/', {
 		}
 	}],
 	action(){
-		ReactLayout.render(Landing);
+		ReactLayout.render(Landing, {loginOrSignup : 'Sign up', loginButton: 'Login'});
 	}
 });
 
+public.route('/login', {
+	name: 'login', 
+	action(){
+		ReactLayout.render(Landing, {loginButton: 'Sign up'});
+	}
+})
+
 // In-App routes 
 
-FlowRouter.route('/overview', {
+var loggedIn = FlowRouter.group({
+	// triggersEnter: [function(context, redirect){
+	// 	if(Meteor.loggingIn() || Meteor.user()){ 
+	// 		 redirect('/overview'); 
+	// 	} else {
+	// 		redirect('/login');
+	// 	}
+	// }]
+});
+
+loggedIn.route('/overview', {
 	name: 'overview',
 	action(){ 
 		ReactLayout.render(Main, { contentOverview:'overview' });
@@ -28,7 +47,7 @@ FlowRouter.route('/overview', {
 	}
 });
 
-FlowRouter.route('/overview/:_id', {
+loggedIn.route('/overview/:_id', {
 	name: 'course',
 	action(params){ 
 		ReactLayout.render(Main, { courseId: params._id });

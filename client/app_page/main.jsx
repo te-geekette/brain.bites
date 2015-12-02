@@ -1,7 +1,7 @@
 Main = React.createClass({
 	
 	// INITIAL SETUP 
-	mixins: [ReactMeteorData, SortableMixin],
+	mixins: [ReactMeteorData],
 
 	getInitialState(){
 		return {
@@ -17,7 +17,8 @@ Main = React.createClass({
 		return {
 			courses: Courses.find({}, {sort: {createdAt: -1}}).fetch(),
 			contentItems: ContentItems.find({courseId: courseId}).fetch(),
-			singleCourse: Courses.findOne({ _id: courseId})
+			singleCourse: Courses.findOne({ _id: courseId}),
+			userEmail: Meteor.user().emails[0].address
 		}
 	},
 
@@ -59,7 +60,7 @@ Main = React.createClass({
 		return (
 			<div>
 				<header>
-					<Navigation />
+					<Navigation userEmail={this.data.userEmail} />
 				</header>
 				<main>
 					<div className='container'>
