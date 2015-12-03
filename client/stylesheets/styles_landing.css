@@ -1,30 +1,78 @@
-#login-buttons a,
-.accounts-dialog a {
-	text-decoration: none
+#landing {
+/*	background: url("/images/landing-cover.png") no-repeat center center fixed;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  	width: 100%;
+  	heigth: 100%;
+  	position: fixed; */
 }
 
-#login-buttons .login-link-text {
-	color: white;
-}
-
-#login-buttons .login-close-text {
-	float: right;
-	font-size: 12px;
-	color: rgba(0,0,0,0.8);
-}
-
-#login-buttons #signup-link{
-	float: center;
+#landing img {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
 	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
-#login-buttons #forgot-password-link {
-	float: center;
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  #landing img {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
 }
 
 #landing-box {
 	position: absolute;
   	top: 50%;
   	margin-top: -200px;
+  	margin-right: 10px;
+}
+
+#landing-box .card-title {
+	margin: 30px 0 50px 0;
+	color: #1976D2; 
+}
+
+
+#landing-box button {
+	float: right;
+}
+
+#landing-box ::-webkit-input-placeholder {
+   color: #FFAB40;
+   font-weight: 300;
+}
+
+#landing-box :-moz-placeholder { /* Firefox 18- */
+   color: #FFAB40; 
+   font-weight: 300; 
+}
+
+#landing-box ::-moz-placeholder {  /* Firefox 19+ */
+   color: #FFAB40; 
+   font-weight: 300; 
+}
+
+#landing-box :-ms-input-placeholder {  
+   color: #FFAB40;  
+   font-weight: 300;
+}
+
+#landing-box .card-action a {
+	margin-left: 20px;
+}
+
+#landing-box .card-action a:hover {
+	color: #FFAB40;
 }
 

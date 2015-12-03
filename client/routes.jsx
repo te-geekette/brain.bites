@@ -30,17 +30,20 @@ public.route('/login', {
 // In-App routes 
 
 var loggedIn = FlowRouter.group({
-	// triggersEnter: [function(context, redirect){
-	// 	if(Meteor.loggingIn() || Meteor.user()){ 
-	// 		 redirect('/overview'); 
-	// 	} else {
-	// 		redirect('/login');
-	// 	}
-	// }]
 });
 
 loggedIn.route('/overview', {
 	name: 'overview',
+	triggersEnter: [function(context, redirect){
+		var isNoUser = Meteor.user() === null;
+		var isNotLoggingIn = Meteor.loggingIn() === false;
+
+		console.log(isNotLoggingIn, isNoUser,);
+
+		if( isNotLoggingIn && isNoUser ){ 
+			 redirect('/login'); 
+		}
+	}],
 	action(){ 
 		ReactLayout.render(Main, { contentOverview:'overview' });
 		
