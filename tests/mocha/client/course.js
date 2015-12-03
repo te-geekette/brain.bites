@@ -11,9 +11,12 @@ if ( MochaWeb != null ) {
 
 			before(function(done){
 
-				// I just don't get the result out of the Meteor.call.
+				// 1. Where do I tell Mocha to sign-in to my app? Here? Each time? 
+
+				// 2. I just don't get the result out of the Meteor.call.
 				// It seems Sessions are the only way but it just isn't working. 
 				// https://forums.meteor.com/t/react-using-session-vars-vs-props-to-communicate-between-components/11569
+
 				Meteor.call('addCourse', title, description, function(error, result){
 					Session.set('courseId', result); 	
 				});
@@ -54,6 +57,13 @@ if ( MochaWeb != null ) {
 		});
 
 		describe('Open course', function(){
+
+			// 3. How do I build tests that require a complete flow, like Signin, create course, click on course?
+
+			// 4. How do I test if the correct component was rendered? I guess here comes the special React testing into the game. 
+
+			// 5. Can I access React methods here?  
+
 			before(function(done){
 				courseId = Meteor.call('addCourse', title, description, function(error, result) {
 					return result;
@@ -63,8 +73,6 @@ if ( MochaWeb != null ) {
 			});
 				
 			it ('opens the course with its URL', function(done){
-				// How to work best with React components and their methods? 
-				// chai.expect(buildURL()).to.have.string(courseId);
 				done();
 			});
 
