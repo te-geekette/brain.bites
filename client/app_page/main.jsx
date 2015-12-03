@@ -7,6 +7,7 @@ Main = React.createClass({
 		return {
 			displayState: 'hidden',
 			reducedHeaderState: true,
+			publishedHeaderState: true,
 			reducedHeaderSize: 'small'
 		}
 	},
@@ -19,7 +20,8 @@ Main = React.createClass({
 			publishedCourses: Courses.find({published: true}).fetch(),
 			contentItems: ContentItems.find({courseId: courseId}).fetch(),
 			singleCourse: Courses.findOne({ _id: courseId}),
-			userEmail: Meteor.user().emails[0].address
+			userEmail: Meteor.user().emails[0].address,
+			userName: Meteor.user().username,
 		}
 	},
 
@@ -27,14 +29,14 @@ Main = React.createClass({
 	// Course Overview with list of courses, Single Course with content, Published Courses,  Create Course or Create Content states
 	renderCourses(){
 		return this.data.courses.map((course) => {
-			return <CourseHeader key={course._id} course={course} changeContent={this.changeDisplayContent} hideComponentsClass={this.state.reducedHeaderState} smallCard={this.state.reducedHeaderSize} colOffset="push-s2" />;
+			return <CourseHeader key={course._id} course={course} displayAction={this.state.publishedHeaderState} hideComponentsClass={this.state.reducedHeaderState} smallCard={this.state.reducedHeaderSize} colOffset="push-s2" />;
 		});
 
 	},
 
 	renderPublishedCourses(){
 		return this.data.publishedCourses.map((course) => {
-			return <CourseHeader key={course._id} course={course} changeContent={this.changeDisplayContent} hideComponentsClass={this.state.reducedHeaderState} smallCard={this.state.reducedHeaderSize} colOffset="push-s2" />;
+			return <CourseHeader key={course._id} course={course} userName={this.data.userName} displayAction={!this.state.publishedHeaderState} hideComponentsClass={!this.state.reducedHeaderState} smallCard={this.state.reducedHeaderSize} />;
 		});
 
 	},
@@ -94,3 +96,7 @@ Main = React.createClass({
 		);
 	}
 });
+
+
+// changeContent={this.changeDisplayContent} 
+
