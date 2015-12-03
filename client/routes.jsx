@@ -45,7 +45,7 @@ loggedIn.route('/overview', {
 		}
 	}],
 	action(){ 
-		ReactLayout.render(Main, { contentOverview:'overview' });
+		ReactLayout.render(Main, { displayContent:'overview' });
 		
 	}
 });
@@ -57,3 +57,9 @@ loggedIn.route('/overview/:_id', {
 	}
 });
 
+loggedIn.route('/explore', {
+	name: 'explore',
+	action(params){ 
+		ReactLayout.render(Main, {displayContent: 'explore', hideButton: 'hidden'});
+	}
+});

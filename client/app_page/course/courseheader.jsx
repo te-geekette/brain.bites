@@ -59,36 +59,8 @@ CourseHeader = React.createClass({
 });
 
 // TODO:
-// 1. Make only headline and body clickable
-// 2. Carve out a small area next to the headline that contains the delete (and edit) option 
-// 3. Make sure the progress bar scales properly on mobile
-// 4. Convert minutes into hours
-// 5. Hide the delete and edit buttons when inside course (possible?)
-// 6. Put everything into cards and make them align next to each other
-/*
-			<div className={this.state.grid}> 
-				<a className="row" href={this.buildURL()}>
-					<div className="col s12">
-						<div className="card light-blue lighten-2">
-							<div className="card-content text-cyan text-darken-4">
-
-								<div className="row">
-									<div className="card-title col s11">{this.props.course.title}</div>
-								</div>
-								<div className="row">
-									<div className="col s6">
-										<div>{this.props.course.description}</div>
-									</div>
-									<div className="col s6">
-	          								<p>Estimated Course Duration: {this.props.course.duration} min </p> 
-											<p>Course Progress:</p>
-											<Progress progress={this.props.course.progress} />
-	        						</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</a>
-				<button className="card-title col s1" onClick={this.handleDelete}>delete</button>
-			</div>
-*/
+// 1. Create a second Cartd-Action div and put display-hide options on both 
+// 2. Pass a hide-toggel for these divs through the explorelist 
+// 3. In the new card-action div: show the username of the creator and a "add to my courses button"
+// >> 1. Change signup to include a username -- DONE
+// >> 2. Build the add-to-my-courses feature 
