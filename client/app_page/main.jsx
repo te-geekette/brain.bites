@@ -64,7 +64,7 @@ Main = React.createClass({
 		} else if (this.props.displayContent === 'explore') {
 			return (<ExploreList render={this.renderPublishedCourses} />);
 		} else {
-			return (<Course course={this.data.singleCourse} displayClass={this.state.displayState} onClick={this.cancelCreate} hideComponentsClass={this.state.reducedHeaderState} render={this.renderContent} />);
+			return (<Course course={this.data.singleCourse} displayClass={this.state.displayState} onClick={this.cancelCreate} hideComponentsClass={this.state.reducedHeaderState} displayAction={this.state.publishedHeaderState} render={this.renderContent} />);
 		}
 
 		//var isOverview = this.props.displayContent === 'overview';

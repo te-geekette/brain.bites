@@ -11,25 +11,17 @@ if ( MochaWeb != null ) {
 
 			before(function(done){
 
-				// 1. Where do I tell Mocha to sign-in to my app? Here? Each time? 
+				var callbackCreateCourse = function(error, result){
+					courseId = result; 
 
-				// 2. I just don't get the result out of the Meteor.call.
-				// It seems Sessions are the only way but it just isn't working. 
-				// https://forums.meteor.com/t/react-using-session-vars-vs-props-to-communicate-between-components/11569
+					Meteor.call('returnCourse', courseId, function(error, result){
+						course = result;
+					});
 
-				Meteor.call('addCourse', title, description, function(error, result){
-					Session.set('testCourseId', result); 	
-				});
+					done(); 
+				};
 
-				Meteor.call('returnCourse', courseId, function(error, result){
-					Session.set('testCourse', result);
-				}); 
-
-				courseId = Session.get('testCourseId');
-				course = Session.get('testCourse');
-
-				// console.log(courseId, course); // courseId is returned now, but course is still undefined
-				done();
+				Meteor.call('addCourse', title, description, callbackCreateCourse); 	
 			});
 
 			it ('creates a course', function(done){
@@ -45,8 +37,8 @@ if ( MochaWeb != null ) {
 			});
 					
 			it ('sets the course duration and progress to 0', function(done){
-				chai.expect(course.duration).to.be(0);
-				chai.expect(course.progress).to.be(0);
+				chai.expect(course.duration).to.equal(0);
+				chai.expect(course.progress).to.equal(0);
 				done();
 			});
 
@@ -56,31 +48,31 @@ if ( MochaWeb != null ) {
 			});
 		});
 
-		describe('Open course', function(){
+		// describe('Open course', function(){
 
-			// 3. How do I build tests that require a complete flow, like Signin, create course, click on course?
+		// 	// 3. How do I build tests that require a complete flow, like Signin, create course, click on course?
 
-			// 4. How do I test if the correct component was rendered? I guess here comes the special React testing into the game. 
+		// 	// 4. How do I test if the correct component was rendered? I guess here comes the special React testing into the game. 
 
-			// 5. Can I access React methods here?  
+		// 	// 5. Can I access React methods here?  
 
-			before(function(done){
-				courseId = Meteor.call('addCourse', title, description, function(error, result) {
-					return result;
-				});
-				course = Meteor.call('returnCourse', courseId);
-				done();
-			});
+		// 	before(function(done){
+		// 		courseId = Meteor.call('addCourse', title, description, function(error, result) {
+		// 			return result;
+		// 		});
+		// 		course = Meteor.call('returnCourse', courseId);
+		// 		done();
+		// 	});
 				
-			it ('opens the course with its URL', function(done){
-				done();
-			});
+		// 	it ('opens the course with its URL', function(done){
+		// 		done();
+		// 	});
 
-			after(function(done){
-				Meteor.call('deleteCourse', courseId);
-				done();
-			});
-		});
+		// 	after(function(done){
+		// 		Meteor.call('deleteCourse', courseId);
+		// 		done();
+		// 	});
+		// });
 	});
 }
 			

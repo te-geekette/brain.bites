@@ -20,28 +20,26 @@ CourseHeader = React.createClass({
 	},
 
 	addToCourses(){
+		var oldCourseId = this.props.course._id;
+		var newCourseId; 
+		var courseContent;
 
-		// Create a new course with the available props of the clicked course
-		Meteor.call('addCourse', this.props.course.title, this.props.course.description, function(error, result){
-			Session.set('courseId', result); 	
-		});
+		var callbackCreateContent = function(error, result){
+			courseContent = result;
 
-		// Get the id of the newly created course. 
-		var courseId = Session.get('courseId'); 
-		console.log(courseId);
+			courseContent.map((content) => {
+			Meteor.call('addContent', content.title, content.link, content.duration, newCourseId);
+			});
+		};
 
-		// Find the content of the clicked course. 
-		Meteor.call('findCourseContent', this.props.course._id, function(error, result){
-			Session.set('contentList');
-		});
-		var courseContent = Session.get('contentList');
-		console.log(courseContent);
+		var callbackCreateCourse = function(error, result){
+			newCourseId = result; 
+			Meteor.call('findCourseContent', oldCourseId, callbackCreateContent);
+		};
 
-		// Create new content with the props of content found for the original course
-		courseContent.map((content) => {
-			Meteor.call('addContent', content.title, content.link, content.duration, courseId);
-		});
-		
+		// Create a new course with the available props and content of the clicked course
+		Meteor.call('addCourse', this.props.course.title, this.props.course.description, callbackCreateCourse);
+
 		FlowRouter.go('/overview');
 	},
 
