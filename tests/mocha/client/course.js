@@ -18,17 +18,17 @@ if ( MochaWeb != null ) {
 				// https://forums.meteor.com/t/react-using-session-vars-vs-props-to-communicate-between-components/11569
 
 				Meteor.call('addCourse', title, description, function(error, result){
-					Session.set('courseId', result); 	
+					Session.set('testCourseId', result); 	
 				});
 
 				Meteor.call('returnCourse', courseId, function(error, result){
-					Session.set('course', result);
+					Session.set('testCourse', result);
 				}); 
 
-				courseId = Session.get('courseId');
-				course = Session.get('course');
+				courseId = Session.get('testCourseId');
+				course = Session.get('testCourse');
 
-				console.log(courseId, course); // courseId is returned now, but course is still undefined
+				// console.log(courseId, course); // courseId is returned now, but course is still undefined
 				done();
 			});
 

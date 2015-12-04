@@ -21,9 +21,28 @@ CourseHeader = React.createClass({
 
 	addToCourses(){
 
-		// two options: 
-		// 1. get all properties of this course, inject into "addCourse" call. 
-		// 2. maybe mongo has some sort of clone function  
+		// Create a new course with the available props of the clicked course
+		Meteor.call('addCourse', this.props.course.title, this.props.course.description, function(error, result){
+			Session.set('courseId', result); 	
+		});
+
+		// Get the id of the newly created course. 
+		var courseId = Session.get('courseId'); 
+		console.log(courseId);
+
+		// Find the content of the clicked course. 
+		Meteor.call('findCourseContent', this.props.course._id, function(error, result){
+			Session.set('contentList');
+		});
+		var courseContent = Session.get('contentList');
+		console.log(courseContent);
+
+		// Create new content with the props of content found for the original course
+		courseContent.map((content) => {
+			Meteor.call('addContent', content.title, content.link, content.duration, courseId);
+		});
+		
+		FlowRouter.go('/overview');
 	},
 
 	render(){
@@ -44,7 +63,7 @@ CourseHeader = React.createClass({
 										<i className=" small material-icons">query_builder</i>
 									</div>
 
-									<a className={this.props.hideComponentsClass} onClick={this.addToCourses}>Add to my courses</a>
+									<a id="add-course-button" className={this.props.hideComponentsClass} onClick={this.addToCourses}>Add to my courses</a>
 
 								</div>
 							</div>

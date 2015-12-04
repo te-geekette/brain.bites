@@ -386,5 +386,9 @@ input[type=checkbox]:checked ~ label .check {
   color: rgba(255, 171, 64, 0.61);
 }
 
+/* ---- EXPLORE ---- */
+#add-course-button {
+  cursor: pointer;
+}
   
 
