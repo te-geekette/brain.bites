@@ -75,7 +75,10 @@ if ( MochaWeb != null ) {
 		// });
 	});
 }
-			
+	
+// TODO: 
+// 1. find out about stubbing the signup flow 
+// 2. read about react meteor unit testing		
 				
 
 

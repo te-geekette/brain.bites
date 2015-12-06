@@ -1,7 +1,8 @@
 Meteor.publish('courses', function(){
 	return Courses.find({
 		$or: [
-			{owner: this.userId}
+			{owner: this.userId},
+			{published: true}
 		]
 	});
 });
@@ -9,9 +10,12 @@ Meteor.publish('courses', function(){
 Meteor.publish('contentItems', function(courseId){
 	return ContentItems.find({
 		$or: [
-			{owner: this.userId}
+			{owner: this.userId},
+			{published: true}
 		]
 	});
 });
+
+// {published: true}
 
 

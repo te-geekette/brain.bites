@@ -6,9 +6,6 @@ Main = React.createClass({
 	getInitialState(){
 		return {
 			displayState: 'hidden',
-			// reducedHeaderState: true,
-			// publishedHeaderState: true,
-			// reducedHeaderSize: 'small'
 		}
 	},
 
@@ -16,7 +13,7 @@ Main = React.createClass({
 		var courseId = this.props.courseId;
 
 		return {
-			courses: Courses.find({}, {sort: {createdAt: -1}}).fetch(),
+			courses: Courses.find({owner: Meteor.userId()}, {sort: {createdAt: -1}}).fetch(),
 			publishedCourses: Courses.find({published: true}).fetch(),
 			contentItems: ContentItems.find({courseId: courseId}).fetch(),
 			singleCourse: Courses.findOne({ _id: courseId}),

@@ -6,21 +6,23 @@ CourseHeader = React.createClass({
 
 	getInitialState(){
 		var routeGroup;
-		var overviewHeaderState; // Hides the action box and button for published courses
+		var overviewHeaderState; // Hides the action box for published courses
 		var reducedHeaderSize; // small card for overviews and without "small" class for course views
 		var courseHeaderState; // toggles some components in the overview and course views
 		var colOffset; // adjusts the progress bar in the small card in overviews
 		var courseTogglePublic; // show the "make public" switch only in course view of my courses
+		var addCourseButton; // shows the add-course-button only if it's not your own course
 
 
 		switch (this.props.displayContent) {
 			case "overview": 
 				routeGroup = "/overview/";
-				overviewHeaderState = true; // true = display: none for all components of the Explore-Header
+				overviewHeaderState = true; // true = display: none > for all components of the Explore-Header
 				reducedHeaderSize = 'small';
 				courseHeaderState = true;
 				colOffset="push-s2"; 
 				courseTogglePublic = true; 
+				addCourseButton = true; 
 				break;
 
 			case 'course': 
@@ -28,6 +30,7 @@ CourseHeader = React.createClass({
 				overviewHeaderState = true;
 				courseHeaderState = false;
 				courseTogglePublic = false; 
+				addCourseButton = true; 
 				break; 
 
 			case "explore": 
@@ -37,6 +40,7 @@ CourseHeader = React.createClass({
 				courseHeaderState = false;
 				colOffset="push-s2"; 
 				courseTogglePublic = true; 
+				addCourseButton = (this.props.course.owner === Meteor.userId()) ? true : false; 
 				break;
 
 			case 'exploreCourse':
@@ -44,6 +48,7 @@ CourseHeader = React.createClass({
 				overviewHeaderState = false;
 				courseHeaderState = false;
 				courseTogglePublic = true; 
+				addCourseButton = (this.props.course.owner === Meteor.userId()) ? true : false; 
 				break;
 		}
 
@@ -53,7 +58,8 @@ CourseHeader = React.createClass({
 			reducedHeaderSize: reducedHeaderSize,
 			courseHeaderState: courseHeaderState,
 			colOffset: colOffset,
-			courseTogglePublic: courseTogglePublic
+			courseTogglePublic: courseTogglePublic,
+			addCourseButton: addCourseButton
 		}
 	},
 
@@ -69,10 +75,17 @@ CourseHeader = React.createClass({
 		Meteor.call('deleteCourse', this.props.course._id);
 	},
 
-	tooglePublicState(){
+	togglePublicState(){
 		var newPublishedState = !this.props.course.published; 
-		Meteor.call('setCoursePublished', this.props.course._id, newPublishedState); 
+		var courseId = this.props.course._id;
+		var courseContent; 
+		
+		Meteor.call('findCourseContent', courseId, function(error, result){
+			courseContent = result; 
+			console.log(courseContent);
 
+			Meteor.call('setCourseAndContentPublished', courseId , courseContent, newPublishedState);
+		});  
 	},
 
 	addToCourses(){
@@ -117,10 +130,10 @@ CourseHeader = React.createClass({
 										<i className=" small material-icons">query_builder</i>
 									</div>
 
-									<a id="add-course-button" className={this.state.overviewHeaderState} onClick={this.addToCourses}>ADD TO MY COURSES</a>
+									<a id="add-course-button" className={this.state.addCourseButton} onClick={this.addToCourses}>ADD TO MY COURSES</a>
 									<div className={this.state.courseTogglePublic +" switch"}>
     									<label> Private
-      										<input type="checkbox" onChange={this.tooglePublicState} />
+      										<input type="checkbox" onChange={this.togglePublicState} />
       										<span className="lever"></span> Public
       									</label>
   									</div>
@@ -168,7 +181,8 @@ CourseHeader = React.createClass({
 
 
 // TODO:
-// 2. Add a publishToggle button
-// 3. Add a publishToggle function
-// 4. Style the button
-// 5. Find out if this actually works with a different user. 
+// 1. The switch needs to preserve the state
+// 2. Switch in mobile view? --> Maybe better a checkbox? 
+
+
+
