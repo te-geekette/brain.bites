@@ -83,6 +83,5 @@ Content = React.createClass({
 
 
 // TODO:
-// 4. Make sure they react properly on mobile
+// 1. Disable the checkbox in EXPLORE! 
 
-	// <div id="check-awesome" className="form-group col s1">

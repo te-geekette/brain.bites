@@ -38,8 +38,6 @@ loggedIn.route('/overview', {
 		var isNoUser = Meteor.user() === null;
 		var isNotLoggingIn = Meteor.loggingIn() === false;
 
-		console.log(isNotLoggingIn, isNoUser,);
-
 		if( isNotLoggingIn && isNoUser ){ 
 			 redirect('/login'); 
 		}

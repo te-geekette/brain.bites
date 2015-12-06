@@ -16,6 +16,6 @@ Meteor.publish('contentItems', function(courseId){
 	});
 });
 
-// {published: true}
+
 
 

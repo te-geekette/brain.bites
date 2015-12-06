@@ -82,8 +82,6 @@ CourseHeader = React.createClass({
 		
 		Meteor.call('findCourseContent', courseId, function(error, result){
 			courseContent = result; 
-			console.log(courseContent);
-
 			Meteor.call('setCourseAndContentPublished', courseId , courseContent, newPublishedState);
 		});  
 	},
@@ -183,6 +181,8 @@ CourseHeader = React.createClass({
 // TODO:
 // 1. The switch needs to preserve the state
 // 2. Switch in mobile view? --> Maybe better a checkbox? 
+// 3. The nav should highlight witch view I'm in 
+// 4. Disable the content checkbox in explore
 
 
 

@@ -82,32 +82,3 @@ if ( MochaWeb != null ) {
 				
 
 
-
-
-// 		describe('ProgressBar', function() {
-// 			it('does something', function() {
-// 				chai.assert.equal(true,true);
-// 			});
-// 		});
-
-// 		describe('Course', function() {
-// 			var courseId;
-// 			before(function() {
-// 				// Create course
-// 				// courseId = get the course
-// 			});
-// 				it('creates a course', function() {
-// 					//var courseId = Meteor.call('addCourse', 'testCourse', 'this is a test');
-// 					var course = Meteor.call('getCourseById', courseId);
-// 					chai.assert.isNotNull(course);
-// 					chai.assert.equal(course.title, 'testCourse');
-// 					//var deleted = Metor.call('deleteCourse', courseId);
-// 					//chai.assert.equal(deleted, true);
-// 				});
-// 				after(function() {
-// 					// Delete course
-// 				});
-// 		});
-// 	});	
-// }
-
