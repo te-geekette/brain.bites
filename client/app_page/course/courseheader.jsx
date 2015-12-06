@@ -5,18 +5,74 @@ CourseHeader = React.createClass({
 	},
 
 	getInitialState(){
+		var routeGroup;
+		var overviewHeaderState; // Hides the action box and button for published courses
+		var reducedHeaderSize; // small card for overviews and without "small" class for course views
+		var courseHeaderState; // toggles some components in the overview and course views
+		var colOffset; // adjusts the progress bar in the small card in overviews
+		var courseTogglePublic; // show the "make public" switch only in course view of my courses
+
+
+		switch (this.props.displayContent) {
+			case "overview": 
+				routeGroup = "/overview/";
+				overviewHeaderState = true; // true = display: none for all components of the Explore-Header
+				reducedHeaderSize = 'small';
+				courseHeaderState = true;
+				colOffset="push-s2"; 
+				courseTogglePublic = true; 
+				break;
+
+			case 'course': 
+				routeGroup = "#"; 
+				overviewHeaderState = true;
+				courseHeaderState = false;
+				courseTogglePublic = false; 
+				break; 
+
+			case "explore": 
+				routeGroup = "/explore/";
+				overviewHeaderState = false;
+				reducedHeaderSize = 'small';
+				courseHeaderState = false;
+				colOffset="push-s2"; 
+				courseTogglePublic = true; 
+				break;
+
+			case 'exploreCourse':
+				routeGroup ="#"; 
+				overviewHeaderState = false;
+				courseHeaderState = false;
+				courseTogglePublic = true; 
+				break;
+		}
+
 		return {
-			grid: 'col s12 m6'
+			routeGroup: routeGroup,
+			overviewHeaderState: overviewHeaderState,
+			reducedHeaderSize: reducedHeaderSize,
+			courseHeaderState: courseHeaderState,
+			colOffset: colOffset,
+			courseTogglePublic: courseTogglePublic
 		}
 	},
 
-	buildURL(){
-		var courseURL = "/overview/" + this.props.course._id;
+	buildURL(){ 
+		var routeGroup = this.state.routeGroup; 
+
+		var courseURL = routeGroup + ((routeGroup === '#') ? '' : this.props.course._id);
+
 		return courseURL;
 	}, 
 
 	handleDelete(){
 		Meteor.call('deleteCourse', this.props.course._id);
+	},
+
+	tooglePublicState(){
+		var newPublishedState = !this.props.course.published; 
+		Meteor.call('setCoursePublished', this.props.course._id, newPublishedState); 
+
 	},
 
 	addToCourses(){
@@ -48,21 +104,26 @@ CourseHeader = React.createClass({
 		var durationInHours = (this.props.course.duration/60).toFixed(1);  
 
 		return (
-			<div className={this.state.grid}> 	
-				<div className={this.props.smallCard +" card light-blue darken-3"}>
+			<div className='col s12 m6'> 	
+				<div className={this.state.reducedHeaderSize +" card light-blue darken-3"}>
 					<div className="card-content text-cyan text-darken-4">
 						
-							<div className="row">
+							<div className="row flex align-start">
 								<a href={this.buildURL()} className="card-title col s8">{this.props.course.title}</a>
-								<div className="col s4">
+								<div className="col s4 flex justify-right">
 
-									<div className={!this.props.hideComponentsClass + " chip"}>
+									<div className={!this.state.courseHeaderState + " chip"}>
 										{durationInHours} hrs
 										<i className=" small material-icons">query_builder</i>
 									</div>
 
-									<a id="add-course-button" className={this.props.hideComponentsClass} onClick={this.addToCourses}>Add to my courses</a>
-
+									<a id="add-course-button" className={this.state.overviewHeaderState} onClick={this.addToCourses}>ADD TO MY COURSES</a>
+									<div className={this.state.courseTogglePublic +" switch"}>
+    									<label> Private
+      										<input type="checkbox" onChange={this.tooglePublicState} />
+      										<span className="lever"></span> Public
+      									</label>
+  									</div>
 								</div>
 							</div>
 							
@@ -70,20 +131,20 @@ CourseHeader = React.createClass({
 							
 						
 					</div>
-					<div className={!this.props.displayAction + " card-action"} style={{'background':'white'}}>
+					<div className={!this.state.overviewHeaderState + " card-action"} style={{'background':'white'}}>
 						<div className="row action-row">
 							
-							<a href={this.buildURL()} className={!this.props.hideComponentsClass + " col s1"}>Open</a>
-							<a onClick={this.handleDelete} className={!this.props.hideComponentsClass + " col s1"}>Delete</a>
-							<Progress progress={this.props.course.progress} colOffset={this.props.colOffset} />
-							<div className={this.props.hideComponentsClass + " chip"}>
+							<a href={this.buildURL()} className={!this.state.courseHeaderState + " col s1"}>Open</a>
+							<a onClick={this.handleDelete} className={!this.state.courseHeaderState + " col s1"}>Delete</a>
+							<Progress progress={this.props.course.progress} colOffset={this.state.colOffset} />
+							<div className={this.state.courseHeaderState + " chip"}>
 									{durationInHours} hrs
 									<i className=" small material-icons">query_builder</i>
 							</div>
 						</div>
 					</div>
 
-					<div className={this.props.displayAction + " card-action"} style={{'background': 'white'}}>
+					<div className={this.state.overviewHeaderState + " card-action"} style={{'background': 'white'}}>
 						<div className="row action-row">
 							
 
@@ -105,6 +166,9 @@ CourseHeader = React.createClass({
 	},
 });
 
+
 // TODO:
-// 1. Build the add-to-my-courses feature 
-// 2. Styling for the addCourse button
+// 2. Add a publishToggle button
+// 3. Add a publishToggle function
+// 4. Style the button
+// 5. Find out if this actually works with a different user. 

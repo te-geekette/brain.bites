@@ -4,6 +4,33 @@ Content = React.createClass({
 		contentItem: React.PropTypes.object.isRequired
 	},
 
+	getInitialState(){
+		var publishedContentState;
+		var disabledInExplore;
+
+		switch(this.props.displayContent){
+			case 'overview':
+				publishedContentState = false;
+				break;
+			case 'course':
+				publishedContentState = false;
+				break;
+			case 'explore':
+				publishedContentState = true;
+				disabledInExplore = 'disabled';
+				break;
+			case 'exploreCourse':
+				publishedContentState = true;
+				disabledInExplore = 'disabled';
+				break;
+		}
+
+		return {
+			publishedContentState: publishedContentState,
+			disabledInExplore: disabledInExplore
+		}
+	},
+
 	toggleChecked(){
 		var completedTime = this.props.contentItem.duration; 
 		var courseId = this.props.contentItem.courseId;
@@ -20,14 +47,15 @@ Content = React.createClass({
 	},
 
 	render(){
-		const checkedClass = (this.props.contentItem.checked ? 'checked' : '');
+		var checkedClass = (this.props.contentItem.checked ? 'checked' : '');
+
 		return(
 			<li className={checkedClass}>
 				<div id="content" className="row">
 					<div className="card">
 						<div className="card-content">
 							
-							<input type="checkbox" id="check-me" checked={this.props.contentItem.checked} />
+							<input type="checkbox" id="check-me" checked={this.props.contentItem.checked} disabled={this.state.disabledInExplore} />
 							<label htmlFor="check-me" onClick={this.toggleChecked} >
 								<span className="check"></span>
 								<span className="box"></span>
@@ -42,7 +70,7 @@ Content = React.createClass({
 							</div>
 
 						</div>
-						<div className="card-action">
+						<div className={this.state.publishedContentState +" card-action"}>
 							<a style={{ "marginRight": "10px"}}>move</a>
 							<a onClick={this.handleDelete} style={{ "marginRight": "0px"}}>delete</a>
 						</div>

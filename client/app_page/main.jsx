@@ -6,9 +6,9 @@ Main = React.createClass({
 	getInitialState(){
 		return {
 			displayState: 'hidden',
-			reducedHeaderState: true,
-			publishedHeaderState: true,
-			reducedHeaderSize: 'small'
+			// reducedHeaderState: true,
+			// publishedHeaderState: true,
+			// reducedHeaderSize: 'small'
 		}
 	},
 
@@ -29,14 +29,20 @@ Main = React.createClass({
 	// Course Overview with list of courses, Single Course with content, Published Courses,  Create Course or Create Content states
 	renderCourses(){
 		return this.data.courses.map((course) => {
-			return <CourseHeader key={course._id} course={course} displayAction={this.state.publishedHeaderState} hideComponentsClass={this.state.reducedHeaderState} smallCard={this.state.reducedHeaderSize} colOffset="push-s2" />;
+			return <CourseHeader 
+						key={course._id} course={course} 
+						displayContent={this.props.displayContent} />;
 		});
 
 	},
 
 	renderPublishedCourses(){
 		return this.data.publishedCourses.map((course) => {
-			return <CourseHeader key={course._id} course={course} userName={this.data.userName} displayAction={!this.state.publishedHeaderState} hideComponentsClass={!this.state.reducedHeaderState} smallCard={this.state.reducedHeaderSize} />;
+			return <CourseHeader 
+						key={course._id} 
+						course={course} 
+						userName={this.data.userName} 
+						displayContent={this.props.displayContent} />;
 		});
 
 	},
@@ -44,7 +50,10 @@ Main = React.createClass({
 	renderContent(){
 
 		return this.data.contentItems.map((contentItem) => {
-			return <Content key={contentItem._id} contentItem={contentItem} />;
+			return <Content 
+						key={contentItem._id} 
+						contentItem={contentItem} 
+						displayContent={this.props.displayContent} />;
 		});
 		
 	},
@@ -60,18 +69,23 @@ Main = React.createClass({
 	// NOTE: This might not be the nicest way to work with nested components. I probably should have chosen a router that makes better use of nested components.
 	content(){
 		if (this.props.displayContent === 'overview') {
-			return (<List displayClass={this.state.displayState} onClick={this.cancelCreate} render={this.renderCourses}/>);
-		} else if (this.props.displayContent === 'explore') {
-			return (<ExploreList render={this.renderPublishedCourses} />);
-		} else {
-			return (<Course course={this.data.singleCourse} displayClass={this.state.displayState} onClick={this.cancelCreate} hideComponentsClass={this.state.reducedHeaderState} displayAction={this.state.publishedHeaderState} render={this.renderContent} />);
-		}
+			return (<List 
+						displayClass={this.state.displayState} 
+						onClick={this.cancelCreate} 
+						render={this.renderCourses}/>);
 
-		//var isOverview = this.props.displayContent === 'overview';
-		//return (isOverview ? 
-		//	<List displayClass={this.state.displayState} onClick={this.cancelCreate} render={this.renderCourses}/> :
-		//	<Course course={this.data.singleCourse} displayClass={this.state.displayState} onClick={this.cancelCreate} hideComponentsClass={this.state.reducedHeaderState} render={this.renderContent} />
-		//);
+		} else if (this.props.displayContent === 'explore') {
+			return (<ExploreList 
+						render={this.renderPublishedCourses} />);
+
+		} else {
+			return (<Course 
+						course={this.data.singleCourse} 
+						displayContent={this.props.displayContent} 
+						displayClass={this.state.displayState} 
+						onClick={this.cancelCreate} 
+						render={this.renderContent} />);
+		}
 	},
 
 	// DISPLAY THE PAGE

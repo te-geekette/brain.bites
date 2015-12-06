@@ -53,13 +53,20 @@ loggedIn.route('/overview', {
 loggedIn.route('/overview/:_id', {
 	name: 'course',
 	action(params){ 
-		ReactLayout.render(Main, { courseId: params._id });
+		ReactLayout.render(Main, { displayContent:'course', courseId: params._id,  });
 	}
 });
 
 loggedIn.route('/explore', {
 	name: 'explore',
 	action(params){ 
-		ReactLayout.render(Main, {displayContent: 'explore', hideButton: 'hidden'});
+		ReactLayout.render(Main, { displayContent: 'explore', hideButton: 'hidden' });
+	}
+});
+
+loggedIn.route('/explore/:_id', {
+	name: 'explore',
+	action(params){ 
+		ReactLayout.render(Main, { courseId: params._id, displayContent: 'exploreCourse', hideButton: 'hidden' });
 	}
 });

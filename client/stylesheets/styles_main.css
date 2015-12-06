@@ -13,15 +13,27 @@ main {
   }
 
 .hidden {
-	display: none;
+	display: none !important;
 }
 
 .true {
-  display: none;
+  display: none !important;
 }
 
 .active{
 	display: list-item;
+}
+
+.flex {
+  display: flex;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.justify-right {
+  justify-content: flex-end;
 }
 
 .fixed-action-btn {
@@ -63,7 +75,7 @@ a .row {
 }
 
 .bar-main-container {
-  margin: 10px auto;
+  margin: 0px auto;
   width: 180px;
   height: 30px;
   -webkit-border-radius: 4px;
@@ -189,12 +201,24 @@ a .row {
 .card .card-action .action-row {
   display: flex;
   align-items: center;
-  margin: 0;
+  margin: 10px 0;
 }
 
 .card .card-content .card-title {
   line-height: 38px;
   color: #ffab40;
+}
+
+.card .card-content .switch {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.card .card-content .switch label,
+.card .card-content .switch label span  {
+  position: relative;
+  padding-left: 0;
+  color: #DDD;
 }
 
 .card .card-content p {
@@ -389,6 +413,9 @@ input[type=checkbox]:checked ~ label .check {
 /* ---- EXPLORE ---- */
 #add-course-button {
   cursor: pointer;
+  color: white;
+  font-weight: 300;
+  font-size: 13px;
 }
   
 
