@@ -12,24 +12,32 @@ if ( MochaWeb != null ) {
 			var course;
 
 			before(function(done){
+				var isNoUser = Meteor.user() === null;
+				var isNotLoggingIn = Meteor.loggingIn() === false;
 
 				var callbackReturnCourse = function(error, result){
 					courseId = result; 
+					console.log(courseId);
 					Meteor.call('returnCourse', courseId, function(error, result){
 						course = result;
+						console.log(course);
+						done(); 
 					});
-					done(); 
+					
 				};
 
 				var callbackCreateCourse = function(error, result){
+					console.log('Is this called?');
 					Meteor.call('addCourse', title, description, callbackReturnCourse);
 				}; 
 
+				if( isNotLoggingIn && isNoUser ){ 
+					console.log('Log me in');
+			 		Meteor.loginWithPassword(email, password, callbackCreateCourse);
 
-				if (Meteor.user() === null) {
-					Meteor.loginWithPassword(email, password, callbackCreateCourse);
 				} else {
-					callbackCreateCourse(); 
+					console.log('Call without login');
+					callbackCreateCourse();
 				}
 					
 			});
