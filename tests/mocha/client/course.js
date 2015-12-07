@@ -17,26 +17,20 @@ if ( MochaWeb != null ) {
 
 				var callbackReturnCourse = function(error, result){
 					courseId = result; 
-					console.log(courseId);
 					Meteor.call('returnCourse', courseId, function(error, result){
 						course = result;
-						console.log(course);
 						done(); 
 					});
-					
 				};
 
 				var callbackCreateCourse = function(error, result){
-					console.log('Is this called?');
 					Meteor.call('addCourse', title, description, callbackReturnCourse);
 				}; 
 
 				if( isNotLoggingIn && isNoUser ){ 
-					console.log('Log me in');
 			 		Meteor.loginWithPassword(email, password, callbackCreateCourse);
 
 				} else {
-					console.log('Call without login');
 					callbackCreateCourse();
 				}
 					
