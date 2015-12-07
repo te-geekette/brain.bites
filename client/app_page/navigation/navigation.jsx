@@ -50,13 +50,15 @@ Navigation = React.createClass({
 							</li>
 						</ul>
 					</li>
-				   	<li className="nav-menu"><a href="/overview/"><i className="material-icons small">list</i>My Courses</a></li>
-				   	<li className="nav-menu"><a href="/explore"><i className="material-icons small">language</i>Explore Courses</a></li>
-				   	<li className="nav-menu"><a href="#!"><i className="material-icons small">turned_in</i>References</a></li>
+				   	<li id="overview-nav-link" className="nav-menu"><a href="/overview/"><i className="material-icons small">list</i>My Courses</a></li>
+				   	<li id="explore-nav-link" className="nav-menu"><a href="/explore"><i className="material-icons small">language</i>Explore Courses</a></li>
+				   	
 				</ul>
 			</nav>
 			
 		);
 	}
 });
+
+// <li className="nav-menu"><a href="#!"><i className="material-icons small">turned_in</i>References</a></li>
 

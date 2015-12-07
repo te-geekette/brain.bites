@@ -183,6 +183,8 @@ CourseHeader = React.createClass({
 // 2. Switch in mobile view? --> Maybe better a checkbox? 
 // 3. The nav should highlight witch view I'm in 
 // 4. Disable the content checkbox in explore
+// Finish the signup flow: username styling, forgot password
+// User management modal: change password, change username, change profile-picture
 
 
 

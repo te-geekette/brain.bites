@@ -6,26 +6,35 @@ if ( MochaWeb != null ) {
 		describe('Course Creation', function(){
 			var title = "This is a title";
 			var description = "This is a description";
+			var email = 'test@test.de';
+			var password = "12345"; 
 			var courseId;
 			var course;
 
 			before(function(done){
 
-				var callbackCreateCourse = function(error, result){
+				var callbackReturnCourse = function(error, result){
 					courseId = result; 
-
 					Meteor.call('returnCourse', courseId, function(error, result){
 						course = result;
 					});
-
 					done(); 
 				};
 
-				Meteor.call('addCourse', title, description, callbackCreateCourse); 	
+				var callbackCreateCourse = function(error, result){
+					Meteor.call('addCourse', title, description, callbackReturnCourse);
+				}; 
+
+
+				if (Meteor.user() === null) {
+					Meteor.loginWithPassword(email, password, callbackCreateCourse);
+				} else {
+					callbackCreateCourse(); 
+				}
+					
 			});
 
 			it ('creates a course', function(done){
-
 				chai.expect(course).to.be.an('object');
 				done();
 			});
@@ -48,37 +57,36 @@ if ( MochaWeb != null ) {
 			});
 		});
 
-		// describe('Open course', function(){
+		describe('Show explore page', function(){
 
-		// 	// 3. How do I build tests that require a complete flow, like Signin, create course, click on course?
+			var defProps, renderWithProps, component, el, $el; 
 
-		// 	// 4. How do I test if the correct component was rendered? I guess here comes the special React testing into the game. 
+			beforeEach(function(){
+				defProps = {
+					displayContent: 'explore', 
+					hideButton: 'hidden'
+				};
 
-		// 	// 5. Can I access React methods here?  
-
-		// 	before(function(done){
-		// 		courseId = Meteor.call('addCourse', title, description, function(error, result) {
-		// 			return result;
-		// 		});
-		// 		course = Meteor.call('returnCourse', courseId);
-		// 		done();
-		// 	});
+				renderWithProps = function(props){
+					component = renderComponent(Main, props);
+					el = ReactDOM.findDOMNode(component);
+					$el = $(el); // what is this? 
+				};
+			});
 				
-		// 	it ('opens the course with its URL', function(done){
-		// 		done();
-		// 	});
+			it ('should be mounted in DOM', function(){
+				renderWithProps(defProps);
+				chai.expect($el.length).to.equal(1);
+			});
 
-		// 	after(function(done){
-		// 		Meteor.call('deleteCourse', courseId);
-		// 		done();
-		// 	});
-		// });
+			it ('add course button should be hidden', function(){
+				renderWithProps(defProps); 
+				chai.expect(component.props.hideButton).to.be.equal('hidden'); 
+			});
+
+		});
 	});
 }
-	
-// TODO: 
-// 1. find out about stubbing the signup flow 
-// 2. read about react meteor unit testing		
-				
+
 
 
