@@ -78,6 +78,7 @@ Main = React.createClass({
 		} else {
 			return (<Course 
 						course={this.data.singleCourse} 
+						userName={this.data.userName}
 						displayContent={this.props.displayContent} 
 						displayClass={this.state.displayState} 
 						onClick={this.cancelCreate} 

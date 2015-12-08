@@ -1,5 +1,11 @@
 Navigation = React.createClass({
 
+	getInitialState(){
+		return {
+			selectNavLink: 'active',
+		}
+	},
+
 	componentDidMount(){
     	$(".button-collapse").sideNav();
     	$('.collapsible').collapsible();
@@ -44,14 +50,14 @@ Navigation = React.createClass({
 									<ul>
 										<li><a onClick={this.changePassword}>Change Password</a></li>
 										<li><a onClick={this.changeUsername}>Change Username</a></li>
-										<li className="active"><a onClick={this.handleLogout}>Logout</a></li>
+										<li><a onClick={this.handleLogout}>Logout</a></li>
 									</ul>
 								</div>
 							</li>
 						</ul>
 					</li>
-				   	<li id="overview-nav-link" className="nav-menu active"><a href="/overview/"><i className="material-icons small">list</i>My Courses</a></li>
-				   	<li id="explore-nav-link" className="nav-menu"><a href="/explore"><i className="material-icons small">language</i>Explore Courses</a></li>
+				   	<li id="overview-nav-link" className="nav-menu"><a href="/overview/" ><i className="material-icons small">list</i>My Courses</a></li>
+				   	<li id="explore-nav-link" className="nav-menu"><a href="/explore" ><i className="material-icons small">language</i>Explore Courses</a></li>
 				   	
 				</ul>
 			</nav>

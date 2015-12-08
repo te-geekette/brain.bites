@@ -5495,7 +5495,7 @@ nav {
       float: left;
       padding: 0; }
       nav ul li:hover, nav ul li.active {
-        background-color: rgba(0, 0, 0, 0.1); }
+        background-color: rgba(2, 119, 189, 0.14); }
     nav ul a {
       font-size: 1rem;
       color: #fff;
@@ -7265,7 +7265,7 @@ select {
     float: none;
     padding: 0 15px; }
     .side-nav li:hover, .side-nav li.active {
-      background-color: #ddd; }
+      background-color: rgba(2, 119, 189, 0.14); }
   .side-nav a {
     color: #444;
     display: block;
@@ -7301,7 +7301,7 @@ select {
       left: auto; } }
 
 .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {
-  background-color: #ee6e73; }
+  background-color: rgba(2, 119, 189, 0.14); }
   .side-nav .collapsible-body li.active a, .side-nav.fixed .collapsible-body li.active a {
     color: #fff; }
 
