@@ -209,7 +209,7 @@ a .row {
   color: #ffab40;
 }
 
-.card .card-content .switch {
+/*.card .card-content .switch {
   margin-top: 10px;
   font-weight: 500;
 }
@@ -219,7 +219,7 @@ a .row {
   position: relative;
   padding-left: 0;
   color: #DDD;
-}
+}*/
 
 .card .card-content p {
   color: #eceff1;
@@ -233,6 +233,78 @@ a .row {
 
 .chip {
   float: right;
+}
+
+/* --- SWITCH --- */
+
+.onoffswitch {
+    position: relative; 
+    width: 85px;
+    -webkit-user-select:none; 
+    -moz-user-select:none; 
+    -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; 
+    overflow: hidden; 
+    cursor: pointer;
+    border: 2px solid #999999; 
+    border-radius: 16px;
+    padding-left: 0 !important;
+    height: inherit !important;
+}
+.onoffswitch-inner {
+    display: block; 
+    width: 200%; 
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, 
+.onoffswitch-inner:after {
+    display: block; 
+    float: left; 
+    width: 50%; 
+    height: 27px; 
+    padding: 0; 
+    line-height: 27px;
+    font-size: 13px; 
+    color: white; 
+    font-family: Trebuchet, Arial, sans-serif; 
+    font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "Public";
+    padding-left: 10px;
+    background-color: #1EB3A2; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "Private";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; 
+    width: 18px; 
+    margin: 4.5px;
+    background: #FFFFFF;
+    position: absolute; 
+    top: 0; 
+    bottom: 0;
+    right: 54px;
+    border: 2px solid #999999; 
+    border-radius: 16px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
 }
 
 /* --- Content ---- */
@@ -279,14 +351,14 @@ a .row {
 /* ---- Checkbox --- */
 
 /* basic css */
-input[type=checkbox]   { display:none; }
-label                  { padding-left:50px; }
+#content input[type=checkbox]   { display:none; }
+#content label        { padding-left:50px; }
 #check-awesome         { position:relative; }
 
 /* checkbox css */
 
-label                  { cursor:pointer; }
-label span             { 
+#content label                  { cursor:pointer; }
+#content label span             { 
   display:inline; 
   position:absolute; 
   left:0; 
@@ -295,15 +367,26 @@ label span             {
   transition-duration:0.3s; 
 }
 
-label .box {
+#content label .box {
   border:2px solid #9E9E9E;
   height:20px; 
   width:20px;
   z-index:888;
-  -webkit-transition-delay:0.2s; -moz-transition-delay:0.2s; transition-delay:0.2s;
+  -webkit-transition-delay:0.2s; 
+  -moz-transition-delay:0.2s; 
+  transition-delay:0.2s;
 }
 
-label .check {
+#content label .disabled-box {
+  border:2px solid rgba(158, 158, 158, 0.27);
+  background: rgba(128, 128, 128, 0.32);
+  height:20px; 
+  width:20px;
+  z-index:888;
+  cursor:default;
+}
+
+#content label .check {
   top: -7px;
   left: 6px;
   width: 12px;
@@ -321,18 +404,19 @@ label .check {
 
 /* when checkbox is checked */
 
-input[type=checkbox]:checked ~ label .box { 
+#content input[type=checkbox]:checked ~ label .box { 
   opacity:0;
   -webkit-transform   :scale(0) rotate(360deg);
   -moz-transform      :scale(0) rotate(360deg);
   transform           :scale(0) rotate(360deg);
 }
-input[type=checkbox]:checked ~ label .check {
+#content input[type=checkbox]:checked ~ label .check {
   opacity:1; 
   -webkit-transform   :scale(1) rotate(45deg);
   -moz-transform      :scale(1) rotate(45deg);
   transform           :scale(1) rotate(45deg);
 }
+
 
 /* ---- Course Create ------ */ 
 

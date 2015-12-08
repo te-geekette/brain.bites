@@ -12,6 +12,11 @@ if ( MochaWeb != null ) {
 			var course;
 
 			before(function(done){
+
+				// This will fail when the user has not been created in the database before. 
+				// I did this manually because the Accounts.findUserByEmail function didn't work and therefore a proper test
+				// if the user existed was not possible. #idontlikeunittests
+
 				var isNoUser = Meteor.user() === null;
 				var isNotLoggingIn = Meteor.loggingIn() === false;
 

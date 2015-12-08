@@ -6,28 +6,27 @@ Content = React.createClass({
 
 	getInitialState(){
 		var publishedContentState;
-		var disabledInExplore;
+		var checkBox;
+		var checkMark;
 
 		switch(this.props.displayContent){
-			case 'overview':
-				publishedContentState = false;
-				break;
 			case 'course':
 				publishedContentState = false;
+				checkBox = 'box'; 
+				checkMark = 'check';
 				break;
-			case 'explore':
-				publishedContentState = true;
-				disabledInExplore = 'disabled';
-				break;
+
 			case 'exploreCourse':
 				publishedContentState = true;
-				disabledInExplore = 'disabled';
+				checkBox = 'disabled-box'; 
+				checkMark = 'hidden';
 				break;
 		}
 
 		return {
 			publishedContentState: publishedContentState,
-			disabledInExplore: disabledInExplore
+			checkBox: checkBox,
+			checkMark: checkMark
 		}
 	},
 
@@ -55,10 +54,10 @@ Content = React.createClass({
 					<div className="card">
 						<div className="card-content">
 							
-							<input type="checkbox" id="check-me" checked={this.props.contentItem.checked} disabled={this.state.disabledInExplore} />
+							<input type="checkbox" id="check-me" checked={this.props.contentItem.checked} />
 							<label htmlFor="check-me" onClick={this.toggleChecked} >
-								<span className="check"></span>
-								<span className="box"></span>
+								<span className={this.state.checkMark}></span>
+								<span className={this.state.checkBox}></span>
 							</label>
 							
 							
@@ -81,7 +80,4 @@ Content = React.createClass({
 	}
 });
 
-
-// TODO:
-// 1. Disable the checkbox in EXPLORE! 
 

@@ -22,6 +22,7 @@ CourseHeader = React.createClass({
 				courseHeaderState = true;
 				colOffset="push-s2"; 
 				courseTogglePublic = true; 
+				// courseTogglePublicState = false;
 				addCourseButton = true; 
 				break;
 
@@ -30,6 +31,7 @@ CourseHeader = React.createClass({
 				overviewHeaderState = true;
 				courseHeaderState = false;
 				courseTogglePublic = false; 
+				// courseTogglePublicState = false;
 				addCourseButton = true; 
 				break; 
 
@@ -59,6 +61,7 @@ CourseHeader = React.createClass({
 			courseHeaderState: courseHeaderState,
 			colOffset: colOffset,
 			courseTogglePublic: courseTogglePublic,
+			courseTogglePublicState: this.props.course.published ? 'checked': false,
 			addCourseButton: addCourseButton
 		}
 	},
@@ -79,6 +82,9 @@ CourseHeader = React.createClass({
 		var newPublishedState = !this.props.course.published; 
 		var courseId = this.props.course._id;
 		var courseContent; 
+		var newSwitchState = (this.state.courseTogglePublicState === "checked") ? false: 'checked'; 
+
+		this.setState({ courseTogglePublicState: newSwitchState });
 		
 		Meteor.call('findCourseContent', courseId, function(error, result){
 			courseContent = result; 
@@ -129,12 +135,25 @@ CourseHeader = React.createClass({
 									</div>
 
 									<a id="add-course-button" className={this.state.addCourseButton} onClick={this.addToCourses}>ADD TO MY COURSES</a>
-									<div className={this.state.courseTogglePublic +" switch"}>
-    									<label> Private
-      										<input type="checkbox" onChange={this.togglePublicState} />
-      										<span className="lever"></span> Public
-      									</label>
-  									</div>
+									
+									<div className={this.state.courseTogglePublic +" onoffswitch flex"}>
+    									<input 
+    										type="checkbox" 
+    										name="onoffswitch" 
+    										className="onoffswitch-checkbox" 
+    										id="myonoffswitch" 
+    										checked={this.state.courseTogglePublicState}
+    										onChange={this.togglePublicState}
+    										 
+    										/>
+
+	    								<label className="onoffswitch-label" htmlFor="myonoffswitch" >
+	        								<span className="onoffswitch-inner"></span>
+	        								<span className="onoffswitch-switch"></span>
+	    								</label>
+    									
+									</div>
+
 								</div>
 							</div>
 							
@@ -180,11 +199,18 @@ CourseHeader = React.createClass({
 
 // TODO:
 // 1. The switch needs to preserve the state
-// 2. Switch in mobile view? --> Maybe better a checkbox? 
+
 // 3. The nav should highlight witch view I'm in 
-// 4. Disable the content checkbox in explore
+
 // Finish the signup flow: username styling, forgot password
 // User management modal: change password, change username, change profile-picture
+
+									// <div className={this.state.courseTogglePublic +" switch"}>
+    					// 				<label> Private
+      			// 							<input type="checkbox" onChange={this.togglePublicState} />
+      			// 							<span className="lever"></span> Public
+      			// 						</label>
+  							// 		</div>
 
 
 
