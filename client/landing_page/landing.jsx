@@ -16,11 +16,19 @@ Landing = React.createClass({
 	},
 
 	renderContent(){
-		var isSignup = this.props.loginOrSignup === 'Sign up';
-		return (isSignup ? 
-			<Signup /> : 
-			<Login />
-		);
+		if (this.props.landingContent === 'Sign up') {
+			return (<Signup />);
+
+		} else if (this.props.landingContent === 'Email recovery') {
+			return (<RecoveryEmail />);
+
+		} else if (this.props.landingContent === 'New password') {  // && Accounts._resetPasswordToken hat einen Token bereit gestellt
+			return (<RecoveryPassword />);
+
+		} else {
+			return (<Login />);
+		}
+
 	},
 
 	render() {

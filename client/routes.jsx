@@ -3,20 +3,20 @@
 // has to wait to not interfere with meteor's onStartup function
 FlowRouter.wait();
 
-
 // Landing page route 
 
 var public = FlowRouter.group({});
+var token = Session.get('resetPassword');
 
 public.route('/', {
-	name: 'landing',
+	name: 'signup',
 	triggersEnter: [function(context, redirect){
 		if(Meteor.user()) {
 			redirect('/overview');
 		}
 	}],
 	action(){
-		ReactLayout.render(Landing, {loginOrSignup : 'Sign up', loginButton: 'Login'});
+		ReactLayout.render(Landing, {landingContent : 'Sign up', loginButton: 'Login'});
 	}
 });
 
@@ -25,7 +25,29 @@ public.route('/login', {
 	action(){
 		ReactLayout.render(Landing, {loginButton: 'Sign up'});
 	}
-})
+});
+
+public.route('/password-recovery', {
+	name: 'password-recovery', 
+	action(){
+		ReactLayout.render(Landing, { landingContent: 'Email recovery', loginButton: 'Log in' });
+	}
+});
+
+public.route('/reset-password/' + token, {
+	name: 'password-recovery-new', 
+	// triggersEnter: [function(context, redirect){
+	// 	if (Accounts._resetPasswordToken) {
+ //    		Session.set('resetPassword', Accounts._resetPasswordToken);
+ //  		}
+ //  		console.log(token);
+	// }],
+	action(){
+		ReactLayout.render(Landing, { landingContent: 'New password', loginButton: 'Log in' });
+	}
+});
+
+
 
 // In-App routes 
 

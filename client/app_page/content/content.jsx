@@ -61,7 +61,7 @@ Content = React.createClass({
 							</label>
 							
 							
-							<a href={this.props.contentItem.link} target="_blank" className ="content-title col s9">{this.props.contentItem.title}</a>
+							<a href={this.props.contentItem.link} target="_blank" className ="content-title col s7 pull-s1">{this.props.contentItem.title}</a>
 							
 							<div className ="chip">
 								{this.props.contentItem.duration} min

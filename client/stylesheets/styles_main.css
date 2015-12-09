@@ -330,7 +330,7 @@ a .row {
 }
 
 #content .card .card-content .content-title {
-  padding-left: 0;
+  padding-left: 10px;
 }
 
 #content .card .card-action {

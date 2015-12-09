@@ -32,7 +32,7 @@ Navigation = React.createClass({
 		
 			<nav className="top-nav blue-grey darken-4">
 				<ul id="nav-links" className='right'>
-					<a href="#" className="brand-logo">Logo</a>
+					<a href="#" className="brand-logo">&#123; brain.bites &#125;</a>
 				</ul>
 				
 				<a href="#" data-activates="slide-out" className="button-collapse hide-on-large-only">

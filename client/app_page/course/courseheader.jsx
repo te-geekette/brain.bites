@@ -22,7 +22,6 @@ CourseHeader = React.createClass({
 				courseHeaderState = true;
 				colOffset="push-s2"; 
 				courseTogglePublic = true; 
-				// courseTogglePublicState = false;
 				addCourseButton = true; 
 				break;
 
@@ -31,7 +30,6 @@ CourseHeader = React.createClass({
 				overviewHeaderState = true;
 				courseHeaderState = false;
 				courseTogglePublic = false; 
-				// courseTogglePublicState = false;
 				addCourseButton = true; 
 				break; 
 
@@ -68,9 +66,7 @@ CourseHeader = React.createClass({
 
 	buildURL(){ 
 		var routeGroup = this.state.routeGroup; 
-
 		var courseURL = routeGroup + ((routeGroup === '#') ? '' : this.props.course._id);
-
 		return courseURL;
 	}, 
 
@@ -198,19 +194,12 @@ CourseHeader = React.createClass({
 
 
 // TODO:
-// 1. The switch needs to preserve the state
 
-// 3. The nav should highlight witch view I'm in 
-
-// Finish the signup flow: username styling, forgot password
-// User management modal: change password, change username, change profile-picture
-
-									// <div className={this.state.courseTogglePublic +" switch"}>
-    					// 				<label> Private
-      			// 							<input type="checkbox" onChange={this.togglePublicState} />
-      			// 							<span className="lever"></span> Public
-      			// 						</label>
-  							// 		</div>
+// 1. Finish the signup flow:  forgot password
+// 2. User management modal: change password, change username, change profile-picture
+// 3. Make the lists move around
+// 4. Fix the Logo thing
+// 4. The nav should highlight witch view I'm in 
 
 
 

@@ -63,7 +63,8 @@ Main = React.createClass({
 		this.setState({displayState: 'hidden'});
 	},
 
-	// NOTE: This might not be the nicest way to work with nested components. I probably should have chosen a router that makes better use of nested components.
+	// NOTE: This might not be the nicest way to work with nested components. 
+	// I probably should have chosen a router that makes better use of nested components.
 	content(){
 		if (this.props.displayContent === 'overview') {
 			return (<List 
@@ -110,5 +111,4 @@ Main = React.createClass({
 });
 
 
-// changeContent={this.changeDisplayContent} 
 

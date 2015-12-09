@@ -39,7 +39,7 @@
 }
 
 #landing-box .card-title {
-	margin: 30px 0 50px 0;
+	margin: 20px 0 20px 0;
 	color: #1976D2; 
 }
 
@@ -76,3 +76,6 @@
 	color: #FFAB40;
 }
 
+#login-form {
+  padding-top: 30px; 
+}
