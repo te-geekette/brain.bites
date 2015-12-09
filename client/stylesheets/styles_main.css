@@ -501,5 +501,11 @@ a .row {
   font-weight: 300;
   font-size: 13px;
 }
+
+/*---- Account ---- */
+#landing-box .card-content .recovery-text {
+  color: #9E9E9E;
+  padding: 20px 0;
+}
   
 

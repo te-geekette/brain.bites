@@ -27,22 +27,17 @@ public.route('/login', {
 	}
 });
 
-public.route('/password-recovery', {
+public.route('/reset-password', {
 	name: 'password-recovery', 
 	action(){
 		ReactLayout.render(Landing, { landingContent: 'Email recovery', loginButton: 'Log in' });
 	}
 });
 
-public.route('/reset-password/' + token, {
+public.route('/reset-password/:token', {
 	name: 'password-recovery-new', 
-	// triggersEnter: [function(context, redirect){
-	// 	if (Accounts._resetPasswordToken) {
- //    		Session.set('resetPassword', Accounts._resetPasswordToken);
- //  		}
- //  		console.log(token);
-	// }],
-	action(){
+	action(params){
+		Session.set('resetPassword', params.token);
 		ReactLayout.render(Landing, { landingContent: 'New password', loginButton: 'Log in' });
 	}
 });

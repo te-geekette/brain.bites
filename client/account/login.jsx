@@ -26,7 +26,7 @@ Login = React.createClass({
        	 				<i className='material-icons right'>cloud</i>
        	 				Login
        	 			</button>
-       	 			<a href='/password-recovery'>Forgot your password?</a>
+       	 			<a href='/reset-password'>Forgot your password?</a>
      			</div>
    			</form> 
 		);
