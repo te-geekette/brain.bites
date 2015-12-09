@@ -9,6 +9,7 @@ Navigation = React.createClass({
 	componentDidMount(){
     	$(".button-collapse").sideNav();
     	$('.collapsible').collapsible();
+    	$('.modal-trigger').leanModal();
 	},
 
 	handleLogout(){
@@ -48,8 +49,7 @@ Navigation = React.createClass({
 								</a>
 								<div className="collapsible-body">
 									<ul>
-										<li><a onClick={this.changePassword}>Change Password</a></li>
-										<li><a onClick={this.changeUsername}>Change Username</a></li>
+										<li><a href="#modalAccountSettings">Account Settings</a></li>
 										<li><a onClick={this.handleLogout}>Logout</a></li>
 									</ul>
 								</div>
@@ -58,8 +58,10 @@ Navigation = React.createClass({
 					</li>
 				   	<li id="overview-nav-link" className="nav-menu"><a href="/overview/" ><i className="material-icons small">list</i>My Courses</a></li>
 				   	<li id="explore-nav-link" className="nav-menu"><a href="/explore" ><i className="material-icons small">language</i>Explore Courses</a></li>
-				   	
 				</ul>
+
+				<SettingsModal />
+				
 			</nav>
 			
 		);
@@ -67,4 +69,5 @@ Navigation = React.createClass({
 });
 
 // <li className="nav-menu"><a href="#!"><i className="material-icons small">turned_in</i>References</a></li>
+
 

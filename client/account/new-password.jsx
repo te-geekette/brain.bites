@@ -16,7 +16,7 @@ RecoveryPassword = React.createClass({
 		return(
 			<form id="recovery-email" action="action" onSubmit={this.handleSubmit}>
       			<div>
-      				<p>Enter your new password here and click "Reset password"</p>
+      				<p className="recovery-text">Enter your new password here and click "Reset password"</p>
         			<input type="password" id="recovery-email-password" ref="recoverypassword" placeholder="Enter a new password"/>
         			<button className='btn waves-effect waves-light blue darken-2' type="submit" id="login-button">
        	 				<i className='material-icons right'>cloud</i>
@@ -27,6 +27,3 @@ RecoveryPassword = React.createClass({
 		);
 	}
 });
-
-// Es fehlt der Part mit dem resetPassword token. Ich kehre wahrscheinlich zur password-recovery zurück allerdings mit Token
-// irgendwo muss ein Helper liegen, der den Token erkennt und entscheidet, was gezeigt wird.  
