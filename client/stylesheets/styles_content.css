@@ -1,0 +1,146 @@
+/* --- Content ---- */
+
+#content {
+  margin: 0;
+}
+
+#content .card {
+  box-sizing: inherit;
+}
+
+#content .card .card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10px 15px 15px;
+
+}
+
+#content .card .card-content a {
+  color: #0277BD;
+}
+
+#content .card .card-content .content-title {
+  padding-left: 10px;
+}
+
+#content .card .card-action {
+  display: flex;
+  align-items:center;
+  justify-content: flex-end;
+  background-color: #ECEFF1;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#content .card .card-action a {
+  font-size: 11px; 
+  color: #9e9e9e;
+  cursor:pointer;
+}
+
+#contentHeadline {
+  margin-left: 10px;
+  font-weight: 300;
+  color: rgba(128, 128, 128, 0.19);
+}
+
+/* ---- Checkbox --- */
+
+/* basic css */
+#content input[type=checkbox]   { display:none; }
+#content label        { padding-left:50px; }
+#check-awesome         { position:relative; }
+
+/* checkbox css */
+
+#content label                  { cursor:pointer; }
+#content label span             { 
+  display:inline; 
+  position:absolute; 
+  left:0; 
+  -webkit-transition-duration:0.3s; 
+  -moz-transition-duration:0.3s; 
+  transition-duration:0.3s; 
+}
+
+#content label .box {
+  border:2px solid #9E9E9E;
+  height:20px; 
+  width:20px;
+  z-index:888;
+  -webkit-transition-delay:0.2s; 
+  -moz-transition-delay:0.2s; 
+  transition-delay:0.2s;
+}
+
+#content label .disabled-box {
+  border:2px solid rgba(158, 158, 158, 0.27);
+  background: rgba(128, 128, 128, 0.32);
+  height:20px; 
+  width:20px;
+  z-index:888;
+  cursor:default;
+}
+
+#content label .check {
+  top: -7px;
+  left: 6px;
+  width: 12px;
+  height: 24px;
+  border:2px solid #0f9d58;  
+  border-top: none;
+  border-left: none;
+  opacity:0; 
+  z-index:888;
+  -webkit-transform:rotate(180deg); -moz-transform:rotate(180deg); transform:rotate(180deg);
+  -webkit-transition-delay:0.3s; -moz-transition-delay:0.3s; transition-delay:0.3s;
+}
+
+/* handling click events */
+
+/* when checkbox is checked */
+
+#content input[type=checkbox]:checked ~ label .box { 
+  opacity:0;
+  -webkit-transform   :scale(0) rotate(360deg);
+  -moz-transform      :scale(0) rotate(360deg);
+  transform           :scale(0) rotate(360deg);
+}
+#content input[type=checkbox]:checked ~ label .check {
+  opacity:1; 
+  -webkit-transform   :scale(1) rotate(45deg);
+  -moz-transform      :scale(1) rotate(45deg);
+  transform           :scale(1) rotate(45deg);
+}
+
+/* ---- CONTENT CREATE ---- */
+
+#content-create {
+  margin:0;
+}
+
+#content-create label {
+  padding-left: 0px;
+  color: #0277BD;
+  font-size: 14px; 
+  cursor: none;
+}
+
+#content-create .card .create-action {
+  display: flex;
+  align-items:center;
+  justify-content: flex-end;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #0277BD
+}
+
+#content-create .card .card-action a {
+  color: #ffab40;
+  cursor: pointer;
+}
+
+#content-create .card .card-action .createCancel {
+  color: rgba(255, 171, 64, 0.61);
+}

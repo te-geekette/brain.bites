@@ -1,0 +1,201 @@
+/* ----- COURSE HEADER ---- */
+
+.card .card-action {
+  padding: 10px;
+  background-color: white;
+}
+
+.card .card-action .action-row {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.card .card-content .card-title {
+  line-height: 38px;
+  color: #ffab40;
+}
+
+.card .card-content p {
+  color: #eceff1;
+  font-weight: 300;
+}
+
+.card .card-action a {
+  color: rgba(2, 119, 189, 0.41);
+  cursor:pointer;
+}
+
+.chip {
+  float: right;
+}
+
+/* --- PROGRESS BAR --- */
+
+#bar-1 {
+  padding: 0;
+}
+
+.bar-main-container {
+  margin: 0px auto;
+  width: 180px;
+  height: 30px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 0.8em;
+  color: #FFF;
+}
+
+.wrap { padding: 6px; }
+
+.bar-percentage {
+  float: left;
+  background: rgba(0,0,0,0.13);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  width: 25%;
+  height: 18px;
+  margin: auto;
+  padding-left: 5px;
+  padding-bottom: 0px;
+}
+
+.bar-container {
+  float: right;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  height: 18px;
+  background: rgba(0,0,0,0.13);
+  width: 70%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.bar {
+  float: left;
+  width: 38%;
+  background: rgba(255, 255, 255, 0.89);
+  height: 100%;
+  -webkit-border-radius: 4px 0px 0px 4px;
+  -moz-border-radius: 4x 0px 0px 4px;
+  border-radius: 4px 0px 0px 4px;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* --- SWITCH --- */
+
+.onoffswitch {
+    position: relative; 
+    width: 85px;
+    -webkit-user-select:none; 
+    -moz-user-select:none; 
+    -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; 
+    overflow: hidden; 
+    cursor: pointer;
+    border: 2px solid #999999; 
+    border-radius: 16px;
+    padding-left: 0 !important;
+    height: inherit !important;
+}
+.onoffswitch-inner {
+    display: block; 
+    width: 200%; 
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, 
+.onoffswitch-inner:after {
+    display: block; 
+    float: left; 
+    width: 50%; 
+    height: 27px; 
+    padding: 0; 
+    line-height: 27px;
+    font-size: 13px; 
+    color: white; 
+    font-family: Trebuchet, Arial, sans-serif; 
+    font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "Public";
+    padding-left: 10px;
+    background-color: #1EB3A2; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "Private";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; 
+    width: 18px; 
+    margin: 4.5px;
+    background: #FFFFFF;
+    position: absolute; 
+    top: 0; 
+    bottom: 0;
+    right: 54px;
+    border: 2px solid #999999; 
+    border-radius: 16px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+
+/* ---- Course Create ------ */ 
+
+#course-create-title {
+  height: 120 %; 
+  background-color: rgba(236, 239, 241, 0.55);
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#course-create-title input {
+  line-height: 38px;
+  color: white;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+#course-create-description {
+  height: 120 %; 
+  background-color: rgba(236, 239, 241, 0.55);
+  border-radius: 3px;
+  padding: 10px; 
+}
+
+#course-create-description input {
+  color: white;
+  font-weight: 300;
+}
+
+#createActions {
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#courseHeader {
+  padding-top: 20px;
+}
+
+

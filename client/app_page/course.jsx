@@ -17,4 +17,3 @@ Course = React.createClass({
 	}
 });
 
-// userName={this.props.userName} 

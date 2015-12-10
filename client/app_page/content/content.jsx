@@ -70,7 +70,6 @@ Content = React.createClass({
 
 						</div>
 						<div className={this.state.publishedContentState +" card-action"}>
-							<a style={{ "marginRight": "10px"}}>move</a>
 							<a onClick={this.handleDelete} style={{ "marginRight": "0px"}}>delete</a>
 						</div>
 					</div>

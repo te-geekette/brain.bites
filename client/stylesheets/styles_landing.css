@@ -76,6 +76,11 @@
 	color: #FFAB40;
 }
 
+#landing-box .card-content .recovery-text {
+  color: #9E9E9E;
+  padding: 20px 0;
+}
+
 #login-form {
   padding-top: 30px; 
 }

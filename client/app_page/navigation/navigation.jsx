@@ -22,9 +22,8 @@ Navigation = React.createClass({
 		return (
 		
 			<nav className="top-nav blue-grey darken-4">
-				<ul id="nav-links" className='right'>
-					<a href="#" className="brand-logo">&#123; brain.bites &#125;</a>
-				</ul>
+				<a href="#" className="brand-logo right">&#123; brain.bites &#125;</a>
+				
 				
 				<a href="#" data-activates="slide-out" className="button-collapse hide-on-large-only">
 					<i className="mdi-navigation-menu"></i>
@@ -59,5 +58,7 @@ Navigation = React.createClass({
 });
 
 // <li className="nav-menu"><a href="#!"><i className="material-icons small">turned_in</i>References</a></li>
-
+// <ul id="nav-links" className='right'>
+					
+// </ul>
 

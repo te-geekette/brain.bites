@@ -35,6 +35,7 @@ SettingsModal = React.createClass({
 
 				} else {
 					that.clearAccountForm();
+					that.setState({error: 'hidden'});
 					that.setState({confirmation: ''});
 				}
 			});
@@ -43,8 +44,6 @@ SettingsModal = React.createClass({
 
 		if (password) {
 
-			console.log(oldPassword, password);
-
 			Accounts.changePassword(oldPassword, password, function(error){
 				if(error){
 					that.setState({error: ''}); 
@@ -52,6 +51,7 @@ SettingsModal = React.createClass({
 
 				} else {
 					that.clearAccountForm();
+					that.setState({error: 'hidden'});
 					that.setState({confirmation: ''});
 				}
 
