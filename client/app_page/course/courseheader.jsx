@@ -7,11 +7,9 @@ CourseHeader = React.createClass({
 	},
 
 	getMeteorData(){
-		var userId = this.props.course.owner; 
-
 		return {
 			userName: Meteor.user().username,
-			otherUsersName: Meteor.users.find({_id: userId}).fetch(), 
+			otherUsersName: Meteor.users.findOne({_id: this.props.course.owner}), 
 		}
 	},
 
@@ -77,12 +75,10 @@ CourseHeader = React.createClass({
 
 	showCourseOwner(){
 
-		console.log(this.data.otherUsersName);
-		
 		if (this.props.course.owner === Meteor.userId()){
 			return this.data.userName;
 		} else {
-			return this.data.otherUsersName; 
+			return this.data.otherUsersName.username; 
 		}
 	},
 

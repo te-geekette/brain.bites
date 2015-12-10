@@ -16,8 +16,8 @@ Meteor.publish('contentItems', function(courseId){
 	});
 });
 
-Meteor.publish('userData', function(userId){
-	return Meteor.users.find({_id: userId}, {fields: {'username': 1}}); 
+Meteor.publish('userData', function(){
+	return Meteor.users.find({}); 
 });
 
 
