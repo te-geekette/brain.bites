@@ -16,17 +16,11 @@ And if you created a really cool course for yourself, share it and make it avail
 
 ### Scope:
 { brain.bites } should be available as a web app and hybrid mobile app.
-The first MVP could include the following epics (detailed stories to be spec-ed in later checkpoint):
+The first MVP includes the following epics:
 
 - User: I want to create a profile to create and store my courses
 - User: I want to be able to access  { brain.bites } from my web browser and through an Android app
 - User: I want to create a course with a collection of online content
 - User: I want to interact with the content of my course
-- User: I want to store my favorite resources in „Cheat-Sheet“ lists
-
-Future feature improvements could be (after capstone):
-
 - User: I want to explore courses of other users and share my own.
-- User: I want to manage my courses in the overview page.
-- User: I want to be reminded to work on my course through nice notifications.
-- User: I want add content through a web clipper or the mobile „share“ feature.
+
