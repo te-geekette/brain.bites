@@ -1,11 +1,12 @@
 Main = React.createClass({
 	
 	// INITIAL SETUP 
-	mixins: [ReactMeteorData],
+	mixins: [ReactMeteorData, SortableMixin],
 
 	getInitialState(){
 		return {
 			displayState: 'hidden',
+			items: []
 		}
 	},
 
@@ -18,7 +19,6 @@ Main = React.createClass({
 			contentItems: ContentItems.find({courseId: courseId}).fetch(),
 			singleCourse: Courses.findOne({ _id: courseId}),
 			userEmail: Meteor.user().emails[0].address,
-			// userName: Meteor.user().username,
 		}
 	},
 
@@ -30,7 +30,6 @@ Main = React.createClass({
 						key={course._id} course={course} 
 						displayContent={this.props.displayContent} />;
 		});
-
 	},
 
 	renderPublishedCourses(){
@@ -38,22 +37,22 @@ Main = React.createClass({
 			return <CourseHeader 
 						key={course._id} 
 						course={course} 
-						// userName={this.data.userName} 
 						displayContent={this.props.displayContent} />;
 		});
-
 	},
 
-	renderContent(){
+	// renderContent(){
+	// 	var contentItems = this.data.contentItems; 
 
-		return this.data.contentItems.map((contentItem) => {
-			return <Content 
-						key={contentItem._id} 
-						contentItem={contentItem} 
-						displayContent={this.props.displayContent} />;
-		});
-		
-	},
+	// 	this.setState({items: contentItems});
+
+	// 	return this.state.items.map((contentItem) => {
+	// 		return <Content 
+	// 					key={contentItem._id} 
+	// 					contentItem={contentItem} 
+	// 					displayContent={this.props.displayContent} />;
+	// 	});
+	// },
 
 	showCreate(){
 		this.setState({displayState: 'active'});
@@ -63,8 +62,6 @@ Main = React.createClass({
 		this.setState({displayState: 'hidden'});
 	},
 
-	// NOTE: This might not be the nicest way to work with nested components. 
-	// I probably should have chosen a router that makes better use of nested components.
 	content(){
 		if (this.props.displayContent === 'overview') {
 			return (<List 
@@ -79,11 +76,11 @@ Main = React.createClass({
 		} else {
 			return (<Course 
 						course={this.data.singleCourse} 
-						// userName={this.data.userName}
+						content={this.data.contentItems}
 						displayContent={this.props.displayContent} 
 						displayClass={this.state.displayState} 
 						onClick={this.cancelCreate} 
-						render={this.renderContent} />);
+						/>);
 		}
 	},
 
@@ -109,6 +106,8 @@ Main = React.createClass({
 		);
 	}
 });
+
+//render={this.renderContent}
 
 
 

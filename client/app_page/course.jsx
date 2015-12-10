@@ -4,6 +4,22 @@ Course = React.createClass({
 		course: React.PropTypes.object.isRequired
 	},
 
+	getInitialState(){
+		return {
+			items: this.props.content ? this.props.content : []
+		}
+	},
+
+	renderContent(){
+
+		return this.state.items.map((contentItem) => {
+			return <Content 
+						key={contentItem._id} 
+						contentItem={contentItem} 
+						displayContent={this.props.displayContent} />;
+		});
+	},
+
 
 	render(){
 		return(
@@ -11,10 +27,10 @@ Course = React.createClass({
 					<li id="courseHeader"><CourseHeader course={this.props.course} displayContent={this.props.displayContent} displayAction={this.props.displayAction} hideComponentsClass={!this.props.hideComponentsClass}/></li>
 					<li id="contentHeadline"><h4>course content</h4></li>
 					<ContentCreate course={this.props.course} displayClass={this.props.displayClass} onClick={this.props.onClick} />
-					{this.props.render()}
+					{this.renderContent()}
 				</ul>
 		);
 	}
 });
 
-// userName={this.props.userName} 
+ 
