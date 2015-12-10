@@ -32,6 +32,14 @@ main {
   align-items: flex-start;
 }
 
+.align-center {
+  align-items: center;
+}
+
+.align-base {
+  align-items: baseline;
+}
+
 .justify-right {
   justify-content: flex-end;
 }
@@ -507,5 +515,46 @@ a .row {
   color: #9E9E9E;
   padding: 20px 0;
 }
-  
+
+#modalAccountSettings .modal-content {
+  background: #0277bd;
+  color: #E0E0E0;
+  font-weight: 300;
+}
+
+#modalAccountSettings .modal-footer .account-confirmation {
+  color: rgba(0, 0, 0, 0.74) ;
+  margin: 6px 0 ;
+  line-height: 16px ;
+  padding: 10px 10px 10px 20px ;
+}
+
+#modalAccountSettings .modal-footer .cancel {
+  color: rgba(2, 119, 189, 0.44);
+  padding: 0 20px; 
+}
+
+#modalAccountSettings .modal-footer .save {
+  color: #ffab40;
+  padding-left: 20px;
+}
+
+#modalAccountSettings input {
+  border-bottom-color: rgb(236, 239, 241) !important; 
+  background: white;
+  color: black;
+}
+
+#modalAccountSettings .modal-content .desktop-label {
+  display: none;
+}
+
+  @media only screen and (min-width : 992px) {
+    #modalAccountSettings .modal-content .mobile-label { display: none; }
+    #modalAccountSettings .modal-content .desktop-label { display: inherit; }
+  }
+
+
+
+
 

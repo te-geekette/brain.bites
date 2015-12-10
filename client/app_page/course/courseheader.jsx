@@ -193,13 +193,6 @@ CourseHeader = React.createClass({
 });
 
 
-// TODO:
-
-// 1. Finish the signup flow:  forgot password
-// 2. User management modal: change password, change username, change profile-picture
-// 3. Make the lists move around
-// 4. Fix the Logo thing
-// 4. The nav should highlight witch view I'm in 
 
 
 

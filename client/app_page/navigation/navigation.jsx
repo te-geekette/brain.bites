@@ -17,16 +17,6 @@ Navigation = React.createClass({
 		FlowRouter.go('/login');
 	},
 
-	// changeUsername(){
-	// 	Meteor.call("changeUsername",'Q3SahWEobGRTBAD5c', 'Tina Egolf');
-	// },
-
-	// changePassword(){
-	// 	var oldPassword;
-	// 	var newPassword; 
-	// 	Meteor.call('changeUserPassword', oldPassword, newPassword);
-	// },
-
 	render(){
 
 		return (
@@ -49,7 +39,7 @@ Navigation = React.createClass({
 								</a>
 								<div className="collapsible-body">
 									<ul>
-										<li><a href="#modalAccountSettings">Account Settings</a></li>
+										<li><a className="modal-trigger" href="#modalAccountSettings">Account Settings</a></li>
 										<li><a onClick={this.handleLogout}>Logout</a></li>
 									</ul>
 								</div>

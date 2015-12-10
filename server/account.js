@@ -3,3 +3,11 @@ Meteor.startup(function(){
     	return Meteor.absoluteUrl('reset-password/' + token);
   	};
 });
+
+Meteor.methods({
+	// USER MANAGEMENT 
+
+	changeUsername(userId, newUsername){
+		Accounts.setUsername(userId, newUsername);
+	}
+});

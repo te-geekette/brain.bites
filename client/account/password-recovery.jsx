@@ -11,16 +11,17 @@ RecoveryEmail = React.createClass({
 	handleSubmit(e){
 		e.preventDefault(); 
 		var email = ReactDOM.findDOMNode(this.refs.recoveryemail).value.trim();
+		var that = this; 
 
-		Accounts.forgotPassword({email: email});
+		Accounts.forgotPassword({email: email}, function(error){
+			if(error) {
+				that.setState({error: ''});
+			} else {
+				that.setState({hideAfterSent: 'hidden'});
+				that.setState({confirmation: ''});
+			}
+		});
 
-		this.setState({hideAfterSent: 'hidden'});
-		this.setState({confirmation: ''});
-
-	},
-
-	showError(){
-		this.setState({error: ''});
 	},
 
 	render(){
@@ -34,6 +35,7 @@ RecoveryEmail = React.createClass({
        	 				Send recovery link
        	 			</button>
      			</div>
+     			<p className={this.state.error + " recovery-text"}> Uups! Something went wrong. Please try again.</p>
      			<p className={this.state.confirmation + " recovery-text"}> Thank you! We've sent you an email with the recovery link.</p>
    			</form> 
 		);
