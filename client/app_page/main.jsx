@@ -18,7 +18,7 @@ Main = React.createClass({
 			contentItems: ContentItems.find({courseId: courseId}).fetch(),
 			singleCourse: Courses.findOne({ _id: courseId}),
 			userEmail: Meteor.user().emails[0].address,
-			userName: Meteor.user().username,
+			// userName: Meteor.user().username,
 		}
 	},
 
@@ -38,7 +38,7 @@ Main = React.createClass({
 			return <CourseHeader 
 						key={course._id} 
 						course={course} 
-						userName={this.data.userName} 
+						// userName={this.data.userName} 
 						displayContent={this.props.displayContent} />;
 		});
 
@@ -79,7 +79,7 @@ Main = React.createClass({
 		} else {
 			return (<Course 
 						course={this.data.singleCourse} 
-						userName={this.data.userName}
+						// userName={this.data.userName}
 						displayContent={this.props.displayContent} 
 						displayClass={this.state.displayState} 
 						onClick={this.cancelCreate} 

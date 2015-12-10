@@ -1,7 +1,18 @@
 CourseHeader = React.createClass({
 
+	mixins: [ReactMeteorData],
+
 	propTypes: {
 		course: React.PropTypes.object.isRequired
+	},
+
+	getMeteorData(){
+		var userId = this.props.course.owner; 
+
+		return {
+			userName: Meteor.user().username,
+			otherUsersName: Meteor.users.find({_id: userId}).fetch(), 
+		}
 	},
 
 	getInitialState(){
@@ -61,6 +72,17 @@ CourseHeader = React.createClass({
 			courseTogglePublic: courseTogglePublic,
 			courseTogglePublicState: this.props.course.published ? 'checked': false,
 			addCourseButton: addCourseButton
+		}
+	},
+
+	showCourseOwner(){
+
+		console.log(this.data.otherUsersName);
+		
+		if (this.props.course.owner === Meteor.userId()){
+			return this.data.userName;
+		} else {
+			return this.data.otherUsersName; 
 		}
 	},
 
@@ -176,7 +198,7 @@ CourseHeader = React.createClass({
 
 							<div className='chip col s6'>
 								<img src="/images/profile.png" />
-								{this.props.userName}
+								{this.showCourseOwner()}
 							</div>
 
 							<div className="chip col s4 push-s2">
