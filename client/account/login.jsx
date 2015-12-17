@@ -23,7 +23,7 @@ Login = React.createClass({
         			
         			<input type="password" id="login-password" ref="password" placeholder="Enter your password" />
        	 			<button className='btn waves-effect waves-light blue darken-2' type="submit" id="login-button">
-       	 				<i className='material-icons right'>cloud</i>
+       	 				<i className='mdi-file-cloud right'></i>
        	 				Login
        	 			</button>
        	 			<a href='/reset-password'>Forgot your password?</a>

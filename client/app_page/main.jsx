@@ -91,7 +91,7 @@ Main = React.createClass({
 						{this.content()}
 						<div className={this.props.hideButton + " fixed-action-btn"} onClick={this.showCreate}>
 	    					<a className="btn-floating btn-large light-blue darken-3">
-	      						<span className="large material-icons">add</span>
+	      						<span className="mdi-2x mdi-content-add"></span>
 	    					</a>
 	    				</div>
 					</div>
@@ -100,6 +100,9 @@ Main = React.createClass({
 		);
 	}
 });
+
+// mdi-2x mdi-content-add
+
 
 
 

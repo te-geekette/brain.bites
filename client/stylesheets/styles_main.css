@@ -46,12 +46,16 @@ main {
   justify-content: flex-end;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .fixed-action-btn {
 	bottom: 45px;
 	right: 24px;
 }
 
-@font-face {
+/*@font-face {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
@@ -72,11 +76,22 @@ main {
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
-}
+}*/
 
 a .row {
   color: #37474f ;
 }
+
+.mdi-small {
+  font-size: 15px;
+  padding-left: 4px;
+}
+
+@media only screen and (max-width : 992px) {
+    .mdi-small {
+      display: none;
+    }
+  }
 
 
 /* ----- NAV SIDEBAR ----- */
@@ -150,7 +165,7 @@ nav .brand-logo {
 }
 
 .mdi-navigation-menu {
-  padding-left: 30px;
+  padding-left: 10px;
 }
 
 

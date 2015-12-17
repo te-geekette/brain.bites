@@ -24,7 +24,8 @@ Signup = React.createClass({
         			<input type="password" id="account-password" ref="password" placeholder="Set a password" />
        	 			<button className='btn waves-effect waves-light blue darken-2' type="submit" id="create-account">
        	 				Create account
-       	 				<i className="material-icons right">send</i>
+       	 				<i className="mdi-content-send right"></i>
+       	 				
        	 			</button>
      			</div>
    			</form> 

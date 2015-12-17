@@ -7,7 +7,11 @@ Navigation = React.createClass({
 	},
 
 	componentDidMount(){
-    	$(".button-collapse").sideNav();
+		var width = $(window).width();
+
+    	$(".button-collapse").sideNav({
+    		closeOnClick: (width < 990) ? true : false
+    	});
     	$('.collapsible').collapsible();
     	$('.modal-trigger').leanModal();
 	},
@@ -45,8 +49,8 @@ Navigation = React.createClass({
 							</li>
 						</ul>
 					</li>
-				   	<li id="overview-nav-link" className="nav-menu"><a href="/overview/" ><i className="material-icons small">list</i>My Courses</a></li>
-				   	<li id="explore-nav-link" className="nav-menu"><a href="/explore" ><i className="material-icons small">language</i>Explore Courses</a></li>
+				   	<li id="overview-nav-link" className="nav-menu"><a href="/overview/" ><i className="mdi-action-list small"></i>My Courses</a></li>
+				   	<li id="explore-nav-link" className="nav-menu"><a href="/explore" ><i className="mdi-action-language small"></i>Explore Courses</a></li>
 				</ul>
 
 				<SettingsModal />

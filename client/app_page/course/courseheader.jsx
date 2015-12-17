@@ -145,7 +145,7 @@ CourseHeader = React.createClass({
 
 									<div className={!this.state.courseHeaderState + " chip"}>
 										{durationInHours} hrs
-										<i className=" small material-icons">query_builder</i>
+										<i className="mdi-small mdi-action-query-builder"></i>
 									</div>
 
 									<a id="add-course-button" className={this.state.addCourseButton} onClick={this.addToCourses}>ADD TO MY COURSES</a>
@@ -183,7 +183,7 @@ CourseHeader = React.createClass({
 							<Progress progress={this.props.course.progress} colOffset={this.state.colOffset} />
 							<div className={this.state.courseHeaderState + " chip"}>
 									{durationInHours} hrs
-									<i className=" small material-icons">query_builder</i>
+									<i className="mdi-small mdi-action-query-builder"></i>
 							</div>
 						</div>
 					</div>
@@ -196,10 +196,11 @@ CourseHeader = React.createClass({
 								<img src="/images/profile.png" />
 								{this.showCourseOwner()}
 							</div>
-
-							<div className="chip col s4 push-s2">
-									{durationInHours} hrs
-									<i className=" small material-icons">query_builder</i>
+							<div className="col s3 push-s3 ">
+								<div className="chip flex justify-center">
+										{durationInHours} hrs
+										<i className="mdi-small mdi-action-query-builder"></i>
+								</div>
 							</div>
 
 						</div>

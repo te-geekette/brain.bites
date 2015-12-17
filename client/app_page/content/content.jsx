@@ -65,7 +65,7 @@ Content = React.createClass({
 							
 							<div className ="chip">
 								{this.props.contentItem.duration} min
-								<i className=" small material-icons">query_builder</i>
+								<i className="mdi-small mdi-action-query-builder"></i>
 							</div>
 
 						</div>
@@ -78,5 +78,8 @@ Content = React.createClass({
 		);
 	}
 });
+
+// find the class for mdi-action etc. to verify 
+// find small class to adjust to work with mdi-action 
 
 
