@@ -81,6 +81,15 @@
   padding: 20px 0;
 }
 
+#landing-box .card-content {
+  overflow: visible;
+}
+
+#landing-box .landing-intro-text {
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
 #login-form {
   padding-top: 30px; 
 }

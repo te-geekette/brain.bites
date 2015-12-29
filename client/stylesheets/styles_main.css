@@ -22,9 +22,9 @@ main {
   display: none !important;
 }
 
-.active{
+/*.active{
 	display: list-item;
-}
+}*/
 
 .flex {
   display: flex;

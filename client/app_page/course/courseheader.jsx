@@ -196,7 +196,7 @@ CourseHeader = React.createClass({
 								<img src="/images/profile.png" />
 								{this.showCourseOwner()}
 							</div>
-							<div className="col s3 push-s3 ">
+							<div className="col s3 push-s3">
 								<div className="chip flex justify-center">
 										{durationInHours} hrs
 										<i className="mdi-small mdi-action-query-builder"></i>

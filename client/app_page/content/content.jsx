@@ -8,12 +8,14 @@ Content = React.createClass({
 		var publishedContentState;
 		var checkBox;
 		var checkMark;
+		var checkAction;
 
 		switch(this.props.displayContent){
 			case 'course':
 				publishedContentState = false;
 				checkBox = 'box'; 
 				checkMark = 'check';
+				checkAction = this.toggleChecked;
 				break;
 
 			case 'exploreCourse':
@@ -26,7 +28,8 @@ Content = React.createClass({
 		return {
 			publishedContentState: publishedContentState,
 			checkBox: checkBox,
-			checkMark: checkMark
+			checkMark: checkMark,
+			checkAction: checkAction
 		}
 	},
 
@@ -55,7 +58,7 @@ Content = React.createClass({
 						<div className="card-content">
 							
 							<input type="checkbox" id="check-me" checked={this.props.contentItem.checked} />
-							<label htmlFor="check-me" onClick={this.toggleChecked} >
+							<label htmlFor="check-me" onClick={this.state.checkAction} >
 								<span className={this.state.checkMark}></span>
 								<span className={this.state.checkBox}></span>
 							</label>
