@@ -32,3 +32,5 @@ npm-container
 mike:mocha
 rubaxa:sortable
 accounts-base
+cfs:standard-packages
+cfs:gridfs

@@ -20,6 +20,10 @@ Meteor.publish('userData', function(){
 	return Meteor.users.find({}); 
 });
 
+Meteor.publish('profilePics', function(){
+	return ProfilePics.find();
+});
+
 
 
 

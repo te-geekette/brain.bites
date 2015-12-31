@@ -22,7 +22,7 @@ SettingsModal = React.createClass({
 		var username = ReactDOM.findDOMNode(this.refs.updatedusername).value.trim();
 		var oldPassword = ReactDOM.findDOMNode(this.refs.oldpassword).value.trim();
 		var password = ReactDOM.findDOMNode(this.refs.updatedpassword).value.trim();
-		// var picture = ReactDOM.findDOMNode(this.refs.updatedicture).files;
+		var picture = ReactDOM.findDOMNode(this.refs.updatedpicture).files[0];
 		var userId = Meteor.userId();
 		var that = this;
 		
@@ -58,9 +58,30 @@ SettingsModal = React.createClass({
 			});
 		} 
 
-		// if (picture) {
-		// 	console.log(picture);
-		// }
+		if (picture) {
+
+			var fileInput = new FS.File(picture);
+		
+			ProfilePics.insert(fileInput, function(err, fileObj){
+				if(err) {
+					console.log(err.message);
+				} else {
+					var imagesURL = { 'profile.image': 'cfs/files/profilepics/' + fileObj._id};
+					Meteor.users.update(userId, {$set: imagesURL}); 
+
+					console.log('Worked: ' + Meteor.user().profile.image);
+				}
+				
+			});
+
+			// Meteor.call('changeProfilePicture', userId, picture, function(error){
+			// 	if (error) {
+			// 		console.log(error.message);
+			// 	} else {
+			// 	console.log('ok. this worked', Meteor.user().profile.image);
+			// 	}
+			// }); 
+		}
 	},
 
 	handleCancel(){
@@ -90,8 +111,21 @@ SettingsModal = React.createClass({
 			      		<div className="row">
         					<input className="col m6 s12 push-m4" type="password" id="updated-password" ref="updatedpassword" placeholder="Choose a new password"/>
 			      		</div>
+
+			      		<p className="col s4 mobile-label">Update your profile picture</p>
+				      	<div className="row flex align-base">
+				      		<p className="col s4 desktop-label">Update your profile picture</p>
+							<div className="file-field input-field col m6 s12">
+								<div className="btn">
+									<span>File</span>
+									<input id="image-upload" type="file" ref="updatedpicture" />
+								</div>
+								<div className="file-path-wrapper">
+						        	<input className="file-path validate" type="text"/>
+						      	</div>
+						    </div>
+		      			</div>
 			      	</div>
-			      		
 			    	
 			    	<div className="modal-footer flex justify-right align-center">
 			    		<p className={this.state.error + ' account-confirmation'}>Something went wrong. Please try again.</p>
