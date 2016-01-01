@@ -14,10 +14,8 @@ Profile = React.createClass({
 			var fileUploadTest = fileObj ? fileObj.isUploaded() : false;
 			var fileStoreTest = fileObj ? fileObj.hasStored('profilepics') : false; 
 
-			console.log(fileObj, fileUploadTest, fileStoreTest); 
-
 			if (fileUploadTest && fileStoreTest) {
-				profileImageSource = Meteor.user().profile.image; 
+				profileImageSource = "/" + Meteor.user().profile.image; 
 			} else {
 				profileImageSource = "/images/profile.png"; 
 			}
@@ -46,4 +44,3 @@ Profile = React.createClass({
 	}
 });
 
-//"/images/profile.png"

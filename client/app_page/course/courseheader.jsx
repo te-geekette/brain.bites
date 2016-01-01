@@ -12,28 +12,33 @@ CourseHeader = React.createClass({
 		var profileImageSource;
 		var testCase = Meteor.user().profile != undefined; // Necessary to satisfy the unit test login process
 
-		if (testCase){
-			var profileURL = Meteor.user().profile.image; 
-			var imageID = profileURL.slice(22);
-			var fileObj = ProfilePics.findOne({_id: imageID});
+		// if (testCase){
+		// 	var courseOwner = Meteor.users.findOne({_id: this.props.course.owner});
+		// 	console.log(courseOwner);
 
-			var fileUploadTest = fileObj ? fileObj.isUploaded() : false;
-			var fileStoreTest = fileObj ? fileObj.hasStored('profilepics') : false; 
+		// 	var profileURL = courseOwner.profile.image; 
+		// 	console.log(profileURL);
 
-			if (fileUploadTest && fileStoreTest) {
-				 profileImageSource = Meteor.user().profile.image; 
-			} else {
-				profileImageSource = "/images/profile.png"; 
-			}
+		// 	var imageID = profileURL.slice(22);
+		// 	var fileObj = ProfilePics.findOne({_id: imageID});
 
-		} else {
-			profileImageSource = "/images/profile.png"; 
-		}
+		// 	var fileUploadTest = fileObj ? fileObj.isUploaded() : false;
+		// 	var fileStoreTest = fileObj ? fileObj.hasStored('profilepics') : false; 
+
+		// 	if (fileUploadTest && fileStoreTest) {
+		// 		 profileImageSource = Meteor.user().profile.image; 
+		// 	} else {
+		// 		profileImageSource = "/images/profile.png"; 
+		// 	}
+
+		// } else {
+		// 	profileImageSource = "/images/profile.png"; 
+		// }
 
 		return {
 			userName: Meteor.user().username,
 			otherUsersName: Meteor.users.findOne({_id: this.props.course.owner}), 
-			userPic: profileImageSource
+			// userPic: profileImageSource
 		}
 	},
 
