@@ -38,3 +38,23 @@
     #modalAccountSettings .modal-content .desktop-label { display: inherit; }
   }
 
+#modalAccountSettings .modal-content .file-field {
+  padding: 0;
+}
+
+#modalAccountSettings .modal-content .file-field .btn,
+#modalAccountSettings .modal-content .file-field .btn:hover {
+  background-color: #FFAC43;
+  height: 2.8rem;
+  line-height: 2.8rem; 
+}
+
+#modalAccountSettings .modal-content .file-field .file-path {
+  height: 2.8rem;
+  text-size: 1rem;
+  line-height: 1rem;
+  font-size: 16px;
+  color: #FFAB40; 
+}
+
+

@@ -4,15 +4,29 @@ Profile = React.createClass({
 
 	getMeteorData(){
 		var profileImageSource;
+		var testCase = Meteor.user().profile != undefined; // Necessary to satisfy the unit test login process
 
-		if (Meteor.user().profile != undefined) {
-			 profileImageSource = Meteor.user().profile.image; 
+		if (testCase){
+			var profileURL = Meteor.user().profile.image; 
+			var imageID = profileURL.slice(22);
+			var fileObj = ProfilePics.findOne({_id: imageID});
+
+			var fileUploadTest = fileObj ? fileObj.isUploaded() : false;
+			var fileStoreTest = fileObj ? fileObj.hasStored('profilepics') : false; 
+
+			console.log(fileObj, fileUploadTest, fileStoreTest); 
+
+			if (fileUploadTest && fileStoreTest) {
+				profileImageSource = Meteor.user().profile.image; 
+			} else {
+				profileImageSource = "/images/profile.png"; 
+			}
+
 		} else {
 			profileImageSource = "/images/profile.png"; 
 		}
 
 		return {
-			// profilePics: ProfilePics.find(), 
 			userPic: profileImageSource 
 		}
 	},
@@ -21,7 +35,7 @@ Profile = React.createClass({
 		return (
 			<div id="profile-component">
 				<div id="profile-image">
-					<img src={this.data.userPic} uploading="/images/profile.png" storing="/images/profile.png" store='profileStore' /> 
+					<img src={this.data.userPic} /> 
 				</div>
 				<div id="account" className="sidebar-brand">
 					<div>{this.props.userEmail}</div>

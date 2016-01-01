@@ -15,6 +15,7 @@ SettingsModal = React.createClass({
 		if(username){ ReactDOM.findDOMNode(this.refs.updatedusername).value = ""; }
 		if(oldPassword){ ReactDOM.findDOMNode(this.refs.oldpassword).value = ""; }
 		if(password){ ReactDOM.findDOMNode(this.refs.updatedpassword).value = ''; }
+
 	},
 
 	handleSubmit(e){
@@ -64,23 +65,17 @@ SettingsModal = React.createClass({
 		
 			ProfilePics.insert(fileInput, function(err, fileObj){
 				if(err) {
+					that.setState({error: ''}); 
 					console.log(err.message);
 				} else {
 					var imagesURL = { 'profile.image': 'cfs/files/profilepics/' + fileObj._id};
 					Meteor.users.update(userId, {$set: imagesURL}); 
 
-					console.log('Worked: ' + Meteor.user().profile.image);
+					that.setState({error: 'hidden'});
+					that.setState({confirmation: ''});
 				}
 				
 			});
-
-			// Meteor.call('changeProfilePicture', userId, picture, function(error){
-			// 	if (error) {
-			// 		console.log(error.message);
-			// 	} else {
-			// 	console.log('ok. this worked', Meteor.user().profile.image);
-			// 	}
-			// }); 
 		}
 	},
 
@@ -115,7 +110,7 @@ SettingsModal = React.createClass({
 			      		<p className="col s4 mobile-label">Update your profile picture</p>
 				      	<div className="row flex align-base">
 				      		<p className="col s4 desktop-label">Update your profile picture</p>
-							<div className="file-field input-field col m6 s12">
+							<div className="file-field input-field col m6 s12 flex align-base">
 								<div className="btn">
 									<span>File</span>
 									<input id="image-upload" type="file" ref="updatedpicture" />

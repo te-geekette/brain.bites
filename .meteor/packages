@@ -34,3 +34,4 @@ rubaxa:sortable
 accounts-base
 cfs:standard-packages
 cfs:gridfs
+cfs:graphicsmagick
